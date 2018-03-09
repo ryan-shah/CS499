@@ -12,7 +12,9 @@ public:
 	//variables
 	string name;
 	vector<Program*> dependencies;
-	int estMemUsage;
+	double estMemUsage;
+	double estTime;
+	string path;
 	bool completed = false;
 
 	//functions
