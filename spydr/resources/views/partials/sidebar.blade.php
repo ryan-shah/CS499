@@ -1,6 +1,6 @@
 <div class="sidebar">
-    <ul>
-        <li><input type="text" placeholder="Search.."></li>
-        <li>Programs go here </li>
-    </ul>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 </div>

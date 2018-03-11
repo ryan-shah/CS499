@@ -15,15 +15,15 @@
         </li>
     </ul>
 
-    <div class="ml-auto d-flex flex-row">
-        <form class="form-inline p-2">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
-        </form>
-        <div class="p-2"> {{-- Spacer --}} </div>
-        <form class="form-inline p-2">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
+    {{--<div class="ml-auto d-flex flex-row">--}}
+        {{--<form class="form-inline p-2">--}}
+            {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>--}}
+        {{--</form>--}}
+        {{--<div class="p-2"> --}}{{----}}{{-- Spacer --}}{{----}}{{-- </div>--}}
+        {{--<form class="form-inline p-2">--}}
+            {{--<input class="form-control mr-sm-2" type="text" placeholder="Search">--}}
+            {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}
+        {{--</form>--}}
+    {{--</div>--}}
 
 </nav>
