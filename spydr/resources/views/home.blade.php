@@ -3,13 +3,18 @@
 @section('title', 'Home')
 
 @section('content')
-    @include('partials.topbar')
-    <div class="container">
-        <div class="col-md-3">
-            @include('partials.sidebar')
-        </div>
-        <div class="col-md-9">
-            Hi
+    <div class="col-sm-2">
+        @include('partials.sidebar')
+    </div>
+    <div class="col-sm-10">
+        <div class="flex-container">
+            <div class="statistics">
+                Statistics
+            </div>
+
+            <div class="run-list">
+                Run lists
+            </div>
         </div>
     </div>
 @endsection
