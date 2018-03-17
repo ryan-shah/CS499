@@ -5,6 +5,7 @@
         <link href="{{ asset('css/darkly.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/spydr.js') }}"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +14,7 @@
 
     <body>
         <div class="container-fluid">
-            @include('partials.topbar')
+            @include('partials.topbar') {{-- We probably want the navbar on every page --}}
             <div class="row">
                 @yield('content')
             </div>

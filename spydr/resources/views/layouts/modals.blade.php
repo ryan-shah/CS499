@@ -1,1 +1,1 @@
-@include('partials.add')
+@include('partials.addModal')
