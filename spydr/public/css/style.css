@@ -23,4 +23,23 @@
     background-color: #4e555b;
     height: 40vh;
     margin: 2.5vh;
+    overflow-y: scroll;
+}
+
+.login-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25vh;
+    width: 15em;
+}
+
+.submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
+}
+
+.search-program {
+    width: 80%;
 }

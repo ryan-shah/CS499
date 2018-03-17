@@ -4,7 +4,7 @@
     <head>
         <link href="{{ asset('css/darkly.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        <link href="{{ asset('js/app.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,6 +20,6 @@
         </div>
     </body>
 
-
+    @include('layouts.modals')
 
 </html>
