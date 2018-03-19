@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <form class="form-inline">
+    <form class="form-group-row">
         <input class="form-control search-program" type="text" placeholder="Search">
         <button class="btn btn-outline-success btn-sm" type="submit">Go</button>
     </form>
