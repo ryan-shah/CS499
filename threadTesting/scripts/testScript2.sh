@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sleep 20
-echo "slept for 20"
+sleep 10
+echo "slept for 10"
