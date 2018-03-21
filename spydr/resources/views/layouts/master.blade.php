@@ -14,7 +14,7 @@
 
     <body>
         <div class="container-fluid">
-            @include('partials.topbar') {{-- We probably want the navbar on every page --}}
+            {{--@include('partials.topbar') --}}{{-- We probably want the navbar on every page --}}
             <div class="row">
                 @yield('content')
             </div>

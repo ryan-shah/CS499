@@ -40,6 +40,11 @@
     margin-top: 3vh;
 }
 
+.search-program {
+    width: 70%;
+    display: inline;
+}
+
 .add-program-button {
     margin-top: 1em;
     width: 100%;

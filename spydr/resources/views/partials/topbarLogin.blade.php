@@ -4,14 +4,11 @@
         Spydr
     </a>
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item"> {{-- REMOVE FOR FINAL VERSION --}}
             <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/login">Logout</a>
         </li>
     </ul>
 </nav>
