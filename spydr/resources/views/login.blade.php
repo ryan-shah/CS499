@@ -2,6 +2,8 @@
 
 @section('title', 'Login')
 
+@include('partials.topbarLogin')
+
 @section('content')
     <div class="login-container">
         <form>

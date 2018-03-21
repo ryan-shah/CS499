@@ -2,6 +2,8 @@
 
 @section('title', 'Home')
 
+@include('partials.topbar')
+
 @section('content')
     <div class="col-sm-2">
         @include('partials.sidebar')
