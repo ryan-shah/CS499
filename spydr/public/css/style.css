@@ -46,6 +46,14 @@
 }
 
 .add-program-button {
-    margin-top: 1em;
+    /*margin-top: 1em;*/
+    width: 100%;
+}
+
+.add-runlist-button { /* TRY TO CENTER OR RIGHT-ALIGN THE BUTTON */
+    width: 100%;
+}
+
+.edit-runlist-button {
     width: 100%;
 }
