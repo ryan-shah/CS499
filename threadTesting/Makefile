@@ -1,11 +1,17 @@
 CPPFLAGS=-std=c++11 -pthread -g
 LDFLAGS=-g
 
-spydr: threadTest.o
-	g++ $(CPPFLAGS) -o spydr threadTest.o
+spydr: spydr.o
+	g++ $(CPPFLAGS) -o spydr spydr.o
 
-threadTest.o: threadTest.cpp program.h
-	g++ $(CPPFLAGS) -c threadTest.cpp
+spydr.o: spydr.cpp program.h schedule.cpp schedule.h
+	g++ $(CPPFLAGS) -o spydr.o spydr.cpp schedule.cpp
+
+test: threadTest.o
+	g++ $(CPPFLAGS) -o test threadTest.o
+
+threadTest.o: threadTest.cpp schedule.cpp
+	g++ $(CPPFLAGS) -c threadTest.cpp schedule.cpp
 
 clean:
-	rm *.o spydr
+	rm *.o spydr test

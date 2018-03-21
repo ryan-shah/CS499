@@ -16,6 +16,8 @@ public:
 	double estTime;
 	string path;
 	bool completed = false;
+	string cmdLine;
+	int returnVal;
 
 	//functions
 	bool canRun() {
@@ -24,6 +26,10 @@ public:
 				return false;
 			}
 		}
+		return true;
+	}
+
+	bool checkMem() {
 		return true;
 	}
 };

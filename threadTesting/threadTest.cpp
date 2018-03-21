@@ -8,8 +8,7 @@
 #include <sys/syscall.h>
 #include <dirent.h>
 #include <fstream>
-
-#define gettid() syscall(SYS_gettid)
+#include "schedule.h"
 
 using namespace std;
 
@@ -30,6 +29,7 @@ void get_scripts() {
 		p.estMemUsage = 0;
 		p.estTime = 0;
 		p.path = "scripts/testScript"+to_string(i)+".sh";
+		p.cmdLine = "./"+p.path;
 		scripts.push_back(p);
 	}
 
