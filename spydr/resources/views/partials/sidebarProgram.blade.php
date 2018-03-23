@@ -13,7 +13,8 @@
         <li class="list-group-item">Memory: {{$program['program_memory']}}</li>
         <li class="list-group-item">CPU Time: {{$program['program_cpu_time']}}</li>
         <li class="list-group-item">Path: {{$program['program_path']}}</li>
-        <li class="list-group-item">Edit {{--Javascript call here--}}</li>
+        {{-- i'll take out the inline style later... -Alijah --}}
+        <li class="list-group-item" style="text-align: center;"><a href="#" onclick="editProgram({{$program['program_id']}})">Edit</a></li>
     </ul>
 </div>
 <br>

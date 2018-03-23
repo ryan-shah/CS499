@@ -13,7 +13,7 @@
             @include('partials.statistics')
 
             <div class="run-list">
-
+            @include('partials.runlists')
             </div>
         </div>
     </div>
