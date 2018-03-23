@@ -26,6 +26,13 @@
     overflow-y: scroll;
 }
 
+.statistics {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: left;
+}
+
 .login-container {
     margin-left: auto;
     margin-right: auto;
@@ -68,4 +75,11 @@
 
 .individual-program h4{
     text-align: center;
+}
+
+.placeholder-stats {
+    width: 20%;
+    height: 6em;
+    margin: 1em;
+    background-color: #0c5460;
 }
