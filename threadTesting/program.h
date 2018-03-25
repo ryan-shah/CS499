@@ -30,7 +30,18 @@ public:
 	}
 
 	bool checkMem() {
-		return true;
+		FILE *mem_file = fopen( "/proc/meminfo", "r" );
+		long int totalMem = 0;
+		fscanf(mem_file, "%*s %lu %*s", &totalMem);
+		//mem vals are in kB
+		long int availMem = 0;
+		fscanf(mem_file, "%*s %*lu %*s %*s %lu %*s", &availMem);
+
+		if(availMem > estMemUsage) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 };
 

@@ -8,6 +8,7 @@
 #include <dirent.h>
 #include <fstream>
 #include <queue>
+#include <ctime>
 #include "schedule.h"
 #include "program.h"
 
@@ -51,6 +52,7 @@ int getPID(string name) {
 				ifstream statFile(statPath.c_str());
 				string statLine;
 				getline(statFile, statLine);
+				statFile.close();
 				if( !statLine.empty() ) {
 					size_t pos = statLine.find('\0');
 					if (pos != string::npos)
@@ -76,61 +78,44 @@ void call_from_thread(Program *P) {
 	P->completed = true;
 }
 
-struct pstat {
-	long unsigned int utime_ticks;
-	long int cutime_ticks;
-	long unsigned int stime_ticks;
-	long int cstime_ticks;
-	long unsigned int vsize; // virtual memory size in bytes
-	long unsigned int rss; //Resident  Set  Size in bytes
-	long unsigned int cpu_total_time;
+vector<string> split(string x) {
+	string buff;
+	vector<string> result;
+	size_t pos = x.find(" ");
+	while(pos != string::npos) {
+		buff = x.substr(0, pos);
+		x = x.substr(pos+1, string::npos);
+		result.push_back(buff);
+		pos = x.find(" ");
+	}
+	return result;
 }
 
 void track_process(Program *P) {
 	sleep(1);
-	pstat data;
 	int pid = getPID(P->name);
+	time_t start = time(NULL);
+	long int maxMem = 0;
 	while(pid != -1) {
 		string pidPath = "/proc/"+to_string(pid)+"/stat";
 
 		//open /proc/PID/stat
-		FILE *fpstat = fopen(pidPath, "r");
-		if(fpstat == NULL) {
-			fclose(fpstat);
-			break;
+		ifstream stat_file( pidPath.c_str() );
+		string line_buff;
+		getline(stat_file, line_buff);
+		stat_file.close();
+		vector<string> parts = split(line_buff);
+		string mem = parts[22];
+		long int memVal = atoi(mem);
+		if(memVal > maxMem) {
+			maxMem = memVal;
 		}
-		//open /proc/stat
-		FILE *fstat = fopen("/proc/stat", "r");
-		if(fstat == NULL) {
-			perror("FOPEN ERROR");
-			fclose(fstat);
-			break;
-		}
-
-		//read values from proc/pid/stat
-		long int rss;
-		if( fscanf(fpstat, "%*d %*s %*c %*d %*d% *d %*d %*d %*u %*u %*u %*u %*u %lu %lu %ld %ld %*d %*d %*d %*d %*u %lu %ld", &result.utime_ticks, &result.stime_ticks, &result.cstime_ticks, &result.vsize, &rss) == EOF) {
-			fclose(fpstat);
-			break;
-		}
-		fclose(fpstat);
-		result.rss = rss * getpagessize();
-
-		//read + calc cpu total time from /proc/stat
-		long unsigned int cpu_time[10];
-		if( fscanf(fstat, "%*s %lu %lu %lu %lu %lu %lu %lu %lu %lu %lu", &cpu_time[0], &cpu_time[1], &cpu_time[2], &cpu_time[3], &cpu_time[4], &cpu_time[5], &cpu_time[6], &cpu_time[7], &cpu_time[8], &cpu_time[9]) == EOF) {
-			fclose(fstat);
-			break;
-		}
-		fclose(fstat);
-
-		for(int i = 0; i < 4; i++) {
-			result.cpu_total_time += cpu_time[i];
-		}
-		//
 
 		pid = getPID(P->name);
 	}
+	time_t end = time(NULL);
+	double time_diff = difftime(start, end);
+	cout << time_diff << endl;
 }
 
 /*
