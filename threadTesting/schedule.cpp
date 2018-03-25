@@ -127,6 +127,7 @@ void track_process(Program *P) {
 		for(int i = 0; i < 4; i++) {
 			result.cpu_total_time += cpu_time[i];
 		}
+		//
 
 		pid = getPID(P->name);
 	}
