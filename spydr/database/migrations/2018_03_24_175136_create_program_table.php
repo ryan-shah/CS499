@@ -15,6 +15,7 @@ class CreateProgramTable extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->unsignedInteger('estimated_memory_usage');
             $table->unsignedInteger('estimated_time');
             $table->string('path');
@@ -30,6 +31,6 @@ class CreateProgramTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program');
+        Schema::dropIfExists('programs');
     }
 }

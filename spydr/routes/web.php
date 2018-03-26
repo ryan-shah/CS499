@@ -38,6 +38,7 @@ Route::get('/', function () {
                     )
     );
 
+    $programs = DB::select('select * from programs');
 
 
     return view('home', ['programs' => $programs]);

@@ -33,6 +33,6 @@ class CreateDependencyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dependency');
+        Schema::dropIfExists('dependencies');
     }
 }
