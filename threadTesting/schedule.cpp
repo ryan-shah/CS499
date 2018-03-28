@@ -139,29 +139,30 @@ bool contains(vector<string> list, string el) {
 }
 
 bool Schedule::timeToRun() {
+	cout << "checking time... " << endl;
 	time_t now = time(NULL);
 	struct tm nowTM = *localtime(&now);
 	switch( nowTM.tm_wday ) {
 		case 0:
-			if(contains(days, "sunday")) return true;
+			if(!contains(days, "sunday")) return false;
 			break;
 		case 1:
-			if(contains(days, "monday")) return true;
+			if(!contains(days, "monday")) return false;
 			break;
 		case 2:
-			if(contains(days, "tuesday")) return true;
+			if(!contains(days, "tuesday")) return false;
 			break;
 		case 3:
-			if(contains(days, "wednesday")) return true;
+			if(!contains(days, "wednesday")) return false;
 			break;
 		case 4:
-			if(contains(days, "thursday")) return true;
+			if(!contains(days, "thursday")) return false;
 			break;
 		case 5:
-			if(contains(days, "friday")) return true;
+			if(!contains(days, "friday")) return false;
 			break;
 		case 6:
-			if(contains(days, "saturday")) return true;
+			if(!contains(days, "saturday")) return false;
 			break;
 		default:
 			return false;
@@ -172,7 +173,7 @@ bool Schedule::timeToRun() {
 	startTime.tm_min = min;
 
 	double diff = difftime(now, mktime(&startTime) );
-
+	cout << diff << endl;
 	//return true if within 5 mins of execution time
 	if( (diff / 60) < 5 ) {
 		return true;
