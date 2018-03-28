@@ -35,7 +35,7 @@ public:
 		fscanf(mem_file, "%*s %lu %*s", &totalMem);
 		//mem vals are in kB
 		long int availMem = 0;
-		fscanf(mem_file, "%*s %*lu %*s %*s %lu %*s", &availMem);
+		fscanf(mem_file, "%*s %*u %*s %*s %lu %*s", &availMem);
 
 		if(availMem > estMemUsage) {
 			return true;

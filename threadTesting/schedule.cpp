@@ -9,8 +9,8 @@
 #include <fstream>
 #include <queue>
 #include <ctime>
-#include "schedule.h"
 #include "program.h"
+#include "schedule.h"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ using namespace std;
 //string cmdLine
 //int returnVal
 
-void get_scripts() {
+void Schedule::get_scripts() {
 
 	for(int i = 1; i < 5; i++) {
 		Program p;
@@ -31,7 +31,7 @@ void get_scripts() {
 		p.estMemUsage = 0;
 		p.estTime = i * 5;
 		p.path = "scripts/testScript"+to_string(i)+".sh";
-		p.cmdLine = "./" + path;
+		p.cmdLine = "./" + p.path;
 		programs.push_back(p);
 	}
 
@@ -106,7 +106,7 @@ void track_process(Program *P) {
 		stat_file.close();
 		vector<string> parts = split(line_buff);
 		string mem = parts[22];
-		long int memVal = atoi(mem);
+		int memVal = stoi(mem);
 		if(memVal > maxMem) {
 			maxMem = memVal;
 		}
@@ -124,6 +124,63 @@ int min;
 vector<string> days;
 vector<Program> programs;
 */
+
+bool contains(vector<string> list, string el) {
+	for(int i = 0; i < list.size(); i++) {
+		string x = list[i];
+		for(int j = 0; j < x.length(); j++) {
+			x[j] = tolower(x[j]);
+		}
+		if(x == el) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Schedule::timeToRun() {
+	time_t now = time(NULL);
+	struct tm nowTM = *localtime(&now);
+	switch( nowTM.tm_wday ) {
+		case 0:
+			if(contains(days, "sunday")) return true;
+			break;
+		case 1:
+			if(contains(days, "monday")) return true;
+			break;
+		case 2:
+			if(contains(days, "tuesday")) return true;
+			break;
+		case 3:
+			if(contains(days, "wednesday")) return true;
+			break;
+		case 4:
+			if(contains(days, "thursday")) return true;
+			break;
+		case 5:
+			if(contains(days, "friday")) return true;
+			break;
+		case 6:
+			if(contains(days, "saturday")) return true;
+			break;
+		default:
+			return false;
+	}
+
+	struct tm startTime = *localtime(&now);
+	startTime.tm_hour = hour;
+	startTime.tm_min = min;
+
+	double diff = difftime(now, mktime(&startTime) );
+
+	//return true if within 5 mins of execution time
+	if( (diff / 60) < 5 ) {
+		return true;
+	}
+
+	return false;
+}
+
 void Schedule::run() {
 	get_scripts();
 
@@ -148,7 +205,8 @@ void Schedule::run() {
 		}
 		//if there are programs to run pop one off and run it if you can
 		if( !canRun.empty() ) {
-			Program *p = canRun.pop();
+			Program *p = canRun.front();
+			canRun.pop();
 			if( p->checkMem() ) {
 				th.push_back(thread(call_from_thread, p) );
 				th.push_back(thread(track_process, p) );
@@ -160,7 +218,8 @@ void Schedule::run() {
 
 	while( !canRun.empty() ) {
 
-		Program *p = canRun.pop();
+		Program *p = canRun.front();
+		canRun.pop();
 		if( p->checkMem() ) {
 			th.push_back(thread(call_from_thread, p) );
 			th.push_back(thread(track_process, p) );
@@ -173,5 +232,5 @@ void Schedule::run() {
 	for(auto &t : th) {
 		t.join();
 	}
-	return 0;
+	return;
 }
