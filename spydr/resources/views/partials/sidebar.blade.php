@@ -7,4 +7,7 @@
     <button type="button" class="btn btn-outline-success btn-sm add-program-button" data-toggle="modal" data-target="#addProgramModal">
         Add Program {{-- Launch "Add Progam" modal --}}
     </button>
+
+    @each('partials.sidebarProgram', $programs, 'program')
+
 </div>

@@ -10,12 +10,10 @@
     </div>
     <div class="col-sm-10">
         <div class="flex-container">
-            <div class="statistics">
-                Statistics
-            </div>
+            @include('partials.statistics')
 
             <div class="run-list">
-                Run lists
+            @include('partials.runlists')
             </div>
         </div>
     </div>

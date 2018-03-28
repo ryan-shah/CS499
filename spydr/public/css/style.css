@@ -1,7 +1,8 @@
 .sidebar {
-    background-color: darkred;
+    background-color: #444444;
     height: 85vh;
     margin-top: 2.5vh;
+    overflow-y: scroll;
 }
 
 .navbar-nav > li > a, .navbar-brand {
@@ -26,6 +27,13 @@
     overflow-y: scroll;
 }
 
+.statistics {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: left;
+}
+
 .login-container {
     margin-left: auto;
     margin-right: auto;
@@ -46,6 +54,33 @@
 }
 
 .add-program-button {
-    margin-top: 1em;
+    /*margin-top: 1em;*/
     width: 100%;
+    margin-bottom: 28px;
+}
+
+.edit-program-button {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.add-runlist-button { /* TRY TO CENTER OR RIGHT-ALIGN THE BUTTON */
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.edit-runlist-button {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.individual-program h4{
+    text-align: center;
+}
+
+.placeholder-stats {
+    width: 20%;
+    height: 6em;
+    margin: 1em;
+    background-color: #0c5460;
 }
