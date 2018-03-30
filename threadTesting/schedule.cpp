@@ -9,20 +9,14 @@
 #include <fstream>
 #include <queue>
 #include <ctime>
+#include <cmath>
 #include "program.h"
 #include "schedule.h"
 
 using namespace std;
 
-//string name;
-//vector<Program*> dependencies;
-//double estMemUsage;
-//double estTime;
-//string path;
-//bool completed = false;
-//string cmdLine
-//int returnVal
-
+//loads test scripts from scripts dir
+//replace with json file reading
 void Schedule::get_scripts() {
 
 	for(int i = 1; i < 5; i++) {
@@ -37,22 +31,32 @@ void Schedule::get_scripts() {
 
 }
 
+//given a name of a program searches through /proc/PID/stat files to find
+//a process with the same name
+//returns PID if successfull else -1
 int getPID(string name) {
 	int pid = -1;
+	//open /proc dir
 	DIR *dp = opendir("/proc");
 
 	if( dp != NULL ) {
 
 		struct dirent *dirp;
+		//go through each directory
 		while ( pid < 0 && (dirp = readdir(dp)) ) {
 			int id = atoi(dirp->d_name);
 
 			if(id > 0) {
+				//found a directory with a PID
 				string statPath = string("/proc/") + dirp->d_name + "/stat";
+				//open /proc/PID/stat and read line
 				ifstream statFile(statPath.c_str());
 				string statLine;
 				getline(statFile, statLine);
 				statFile.close();
+
+				//line format is: PID (processName) ...
+				//get processName by searching and trimming based on ( )
 				if( !statLine.empty() ) {
 					size_t pos = statLine.find('\0');
 					if (pos != string::npos)
@@ -61,8 +65,10 @@ int getPID(string name) {
 					statLine = statLine.substr(pos + 1);
 					pos = statLine.find(')');
 					statLine = statLine.substr(0, pos);
+					//if name = found pid success!
 					if(name == statLine) {
 						pid = id;
+						break;
 					}
 				}
 			}
@@ -72,12 +78,15 @@ int getPID(string name) {
 	return pid;
 }
 
+//helper function that runs a given program using system
 void call_from_thread(Program *P) {
+	cout << "running program: " << P->name << endl;
 	int status = system( P->cmdLine.c_str() );
 	P->returnVal = status;
 	P->completed = true;
 }
 
+//helper function that takes a string and splits it on " " and returned vector of peices
 vector<string> split(string x) {
 	string buff;
 	vector<string> result;
@@ -94,6 +103,7 @@ vector<string> split(string x) {
 void track_process(Program *P) {
 	sleep(1);
 	int pid = getPID(P->name);
+	cout << "Tracking process " << P->name << " with PID: " << pid << endl;
 	time_t start = time(NULL);
 	long int maxMem = 0;
 	while(pid != -1) {
@@ -114,8 +124,9 @@ void track_process(Program *P) {
 		pid = getPID(P->name);
 	}
 	time_t end = time(NULL);
-	double time_diff = difftime(start, end);
-	cout << time_diff << endl;
+	double time_diff = difftime(end, start);
+	cout << "Program " << P->name << " finished in "<< time_diff << " seconds." << endl;
+	cout << maxMem << endl;
 }
 
 /*
@@ -173,9 +184,9 @@ bool Schedule::timeToRun() {
 	startTime.tm_min = min;
 
 	double diff = difftime(now, mktime(&startTime) );
-	cout << diff << endl;
+	cout << abs(diff / 60) << endl;
 	//return true if within 5 mins of execution time
-	if( (diff / 60) < 5 ) {
+	if( abs(diff / 60) < 5 ) {
 		return true;
 	}
 
@@ -183,8 +194,6 @@ bool Schedule::timeToRun() {
 }
 
 void Schedule::run() {
-	get_scripts();
-
 	vector<thread> th;
 	vector<Program*> toRun;
 	queue<Program*> canRun;

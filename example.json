@@ -1,0 +1,64 @@
+{
+"schedules": {
+    "0": {
+      "hour":23,
+      "min":59,
+      "programs": {
+        "0": {
+          "name":  "string",
+          "estMemUsage": 0.00,
+          "estTime": 0.00,
+          "path":  "string",
+          "cmdLine":  "string"
+        },
+        "1": {
+          "name":  "string",
+          "estMemUsage": 0.00,
+          "estTime": 0.00,
+          "path":  "string",
+          "cmdLine":  "string"
+        }
+      },
+      "dependencies": {
+        "0": {
+          "parent":  "string",
+          "child":  "string"
+        },
+        "1": {
+          "parent":  "string",
+          "child":  "string"
+        }
+      }
+    },
+    "1": {
+      "hour":23,
+      "min":59,
+      "programs": {
+        "0": {
+          "name":  "string",
+          "estMemUsage": 0.00,
+          "estTime": 0.00,
+          "path":  "string",
+          "cmdLine":  "string"
+        },
+        "1": {
+          "name":  "string",
+          "estMemUsage": 0.00,
+          "estTime": 0.00,
+          "path":  "string",
+          "cmdLine":  "string"
+        }
+      },
+      "dependencies": {
+        "0": {
+          "parent":  "string",
+          "child":  "string"
+        },
+        "1": {
+          "parent":  "string",
+          "child":  "string"
+        }
+      }
+    }
+  }
+}
