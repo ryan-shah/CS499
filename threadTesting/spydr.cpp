@@ -7,8 +7,8 @@ int main() {
 
 	Schedule s;
 	s.get_scripts();
-	s.hour = 11;
-	s.min = 30;
+	s.hour = 13;
+	s.min = 25;
 	s.days.push_back("wednesday");
 
 	if(s.timeToRun()) {
