@@ -31,22 +31,21 @@ function format_time($seconds) {
 function format_memory($bytes) {
     $memory = array (
         // This is only for display, so memory will be calculated in powers of 10
-        "B" => 10**0,
         "KB" => 10**3,
         "MB" => 10**6,
         "GB" => 10**9
     );
     // Repetitive code, sure, but I doubt we'll need to change it much in the future anyway...
     if($bytes >= $memory["GB"]){
-        return (string)($bytes/$memory["GB"]) . "GB";
+        return (string)(round($bytes/$memory["GB"], 2)) . "GB";
     }
 
     if($bytes >= $memory["MB"]){
-        return (string)($bytes/$memory["MB"]) . "MB";
+        return (string)(round($bytes/$memory["MB"], 2)) . "MB";
     }
 
     if($bytes >= $memory["KB"]){
-        return (string)($bytes/$memory["KB"]) . "KB";
+        return (string)(round($bytes/$memory["KB"], 2)) . "KB";
     }
 
     return (string)$bytes . "B";
