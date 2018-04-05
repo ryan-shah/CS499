@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RunlistParametersSeeder extends Seeder
+class RunlistParametersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

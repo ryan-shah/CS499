@@ -15,8 +15,8 @@ class CreateRunlistsTable extends Migration
     {
         Schema::create('runlists', function (Blueprint $table) {
             $table->increments('rid');
-            $table->unsignedInteger('runlist_id');
             $table->unsignedInteger('program_id');
+            $table->unsignedInteger('runlist_id');
             $table->timestamps();
         });
 
