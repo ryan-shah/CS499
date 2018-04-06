@@ -12,11 +12,14 @@
 */
 
 use App\Program;
+use App\RunlistParameter;
 
 Route::get('/', function () {
 
     $programs = Program::all();
-    return view('home', ['programs' => $programs]);
+    $runlist_parameters = RunlistParameter::all();
+
+    return view('home', ['programs' => $programs], ['runlist_parameters' => $runlist_parameters]);
 });
 
 Route::post('/add', 'ProgramController@addNewProgram');

@@ -25,13 +25,13 @@ $(document).ready(function () {
 
 
 function editProgram(program_id){
-    alert("Editing program with ID " + program_id);
+    alert("Editing program with PID " + program_id);
 }
 
 function addRunlist(){
     alert("Runlist jazz happens");
 }
 
-function editRunlist(){
-    alert("Runlist jazz happens");
+function editRunlist(runlist_id){
+    alert("Editing runlist with RPID " + runlist_id);
 }

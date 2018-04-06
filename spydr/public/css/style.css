@@ -78,6 +78,14 @@
     text-align: center;
 }
 
+.individual-runlist h4{
+    text-align: center;
+}
+
+.panel-collapse{
+    text-align: center;
+}
+
 .placeholder-stats {
     width: 20%;
     height: 6em;
