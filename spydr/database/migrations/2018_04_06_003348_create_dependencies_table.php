@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRunlistsTable extends Migration
+class CreateDependenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateRunlistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('runlists', function (Blueprint $table) {
-            $table->increments('rid');
+        Schema::create('dependencies', function (Blueprint $table) {
+            $table->increments('did');
             $table->unsignedInteger('program_id');
-            $table->unsignedInteger('runlist_id');
+            $table->unsignedInteger('dependency_id');
             $table->timestamps();
         });
 
-        Schema::table('runlists', function($table) {
+        Schema::table('dependencies', function(Blueprint $table) {
             $table->foreign('program_id')->references('pid')->on('programs');
-            $table->foreign('runlist_id')->references('rpid')->on('runlist_parameters');
+            $table->foreign('dependency_id')->references('pid')->on('programs');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateRunlistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('runlists');
+        Schema::dropIfExists('dependencies');
     }
 }
