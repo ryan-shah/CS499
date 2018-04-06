@@ -16,7 +16,6 @@ use App\Program;
 Route::get('/', function () {
 
     $programs = Program::all();
-
     return view('home', ['programs' => $programs]);
 });
 

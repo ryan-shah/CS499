@@ -20,6 +20,9 @@
                     <br>
                     <label for="runlist">Runlist:</label>
                     <input type="text" class="form-control" id="runlist" name="runlist">
+                    <br>
+                    <label for="args">Additional Arguments:</label>
+                    <input type="text" class="form-control" id="args" name="args">
                 </form>
             </div>
             <div class="modal-footer">

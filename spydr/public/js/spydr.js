@@ -11,13 +11,12 @@ $(document).ready(function () {
             var data = {};
             var $inputs = $('.add-program-form :input');
             console.log($('.add-program-form').serializeArray());
-            $inputs.each(function() {
-                data[$(this).name] = $(this).val();
-            });
+            data = $('.add-program-form').serializeArray();
 
+            console.log(data);
             $.post("/add", data, function (response) {
                 console.log(response);
-            });
+            }, 'json');
         });
     }
 

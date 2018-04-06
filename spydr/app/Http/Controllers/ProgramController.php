@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,17 +18,27 @@ class ProgramController extends Controller
     }
 
     public function addNewProgram(Request $request){
-        if ($request->isMethod('post')){
-            // At this point, jQuery has given us all of the information we need to make a new
-            // entry in the database.
+        // At this point, jQuery has given us all of the information we need to make a new
+        // entry in the database.
 
-            $response = array(
-                'status' => 'success',
-                'msg' => 'Setting created successfully',
-            );
+        $program = new Program;
+        $program->pname = $request->input('name');
+        $program->estimated_memory_usage = $request->input('memUsage');
+        $program->estimated_time = 0;
+        $program->path = $request->input('path');
+        $program->command_line = $request->input('args');
 
-            return response()->json($response);
+//
+//        // Add stuff for dependencies too
+//
+        $program->save();
+
+        $response = array(
+            'status' => 'success',
+            'msg' => $request->input('name'),
+        );
+
+        return response()->json($response);
 
         }
-    }
 }
