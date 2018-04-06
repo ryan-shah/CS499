@@ -6,18 +6,22 @@ $(document).ready(function () {
         }
     });
 
-    function addProgram() {
-        $(".savestuff").click(function(){
-            var data = {
-                blah: "Yo"
-            };
-            $.post("/", data, function (response) {
+    function submitNewProgram() {
+        $(".submit-program").click(function(){
+            var data = {};
+            var $inputs = $('.add-program-form :input');
+            console.log($('.add-program-form').serializeArray());
+            $inputs.each(function() {
+                data[$(this).name] = $(this).val();
+            });
+
+            $.post("/add", data, function (response) {
                 console.log(response);
             });
         });
     }
 
-    addProgram();
+    submitNewProgram();
 });
 
 

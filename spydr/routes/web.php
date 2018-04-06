@@ -11,14 +11,16 @@
 |
 */
 
+use App\Program;
+
 Route::get('/', function () {
 
-    $programs = DB::select('select * from programs');
+    $programs = Program::all();
 
     return view('home', ['programs' => $programs]);
 });
 
-Route::post('/', 'ProgramController@testfunction');
+Route::post('/add', 'ProgramController@addNewProgram');
 
 
 Route::get('/login', function () {

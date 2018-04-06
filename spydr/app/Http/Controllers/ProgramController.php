@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
 {
@@ -19,6 +20,7 @@ class ProgramController extends Controller
         if ($request->isMethod('post')){
             // At this point, jQuery has given us all of the information we need to make a new
             // entry in the database.
+
             $response = array(
                 'status' => 'success',
                 'msg' => 'Setting created successfully',
