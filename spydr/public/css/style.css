@@ -64,7 +64,7 @@
     margin-bottom: 18px;
 }
 
-.add-runlist-button { /* TRY TO CENTER OR RIGHT-ALIGN THE BUTTON */
+.add-runlist-button {
     width: 100%;
     margin-bottom: 28px;
 }
@@ -75,6 +75,14 @@
 }
 
 .individual-program h4{
+    text-align: center;
+}
+
+.individual-runlist h4{
+    text-align: center;
+}
+
+.panel-collapse{
     text-align: center;
 }
 
