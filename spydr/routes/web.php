@@ -22,7 +22,9 @@ Route::get('/', function () {
     return view('home', ['programs' => $programs], ['runlist_parameters' => $runlist_parameters]);
 });
 
-Route::post('/add', 'ProgramController@addNewProgram');
+Route::post('/add-program', 'ProgramController@addNewProgram');
+Route::post('/get-program/{id}', 'ProgramController@displayProgramInfo');
+Route::post('/edit-program', 'ProgramController@editProgram');
 
 
 Route::get('/login', function () {
