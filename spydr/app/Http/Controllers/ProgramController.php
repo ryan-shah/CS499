@@ -72,4 +72,14 @@ class ProgramController extends Controller
 
         return response()->json($response);
     }
+
+    public function getAllPrograms(Request $request){
+        $programs = Program::select('pid', 'pname')->get();
+        $response = array(
+            'status' => 'success',
+            'programs' => $programs
+        );
+
+        return response()->json($response);
+    }
 }

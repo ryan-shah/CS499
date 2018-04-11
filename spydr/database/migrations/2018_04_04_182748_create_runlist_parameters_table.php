@@ -16,6 +16,7 @@ class CreateRunlistParametersTable extends Migration
         Schema::create('runlist_parameters', function (Blueprint $table) {
             $table->increments('rpid');
             $table->string('rname');
+            $table->time('rtime');
             //Statistics
             $table->timestamps();
         });

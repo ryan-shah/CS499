@@ -7,12 +7,17 @@
             <div class="modal-body">
                 <form class="form-group-row">
                     <label for="name">Name:</label>
-                    <input type="name" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" name="name">
+                    {{-- For now, the runlist will run every day. -Alijah --}}
+                    <br>
+                    <label for="time">Time:</label>
+                    <input type="time" class="form-control" value="20:00" id="time" name="time">
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="addRunlist()" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-primary modal-submit" id="add-runlist" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>

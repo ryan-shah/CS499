@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::post('/add-program', 'ProgramController@addNewProgram');
 Route::post('/get-program/{id}', 'ProgramController@displayProgramInfo');
 Route::post('/edit-program', 'ProgramController@editProgram');
-
+Route::post('/get-program-list', 'ProgramController@getAllPrograms');
 
 Route::get('/login', function () {
     return view('login');

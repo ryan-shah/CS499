@@ -15,6 +15,8 @@ $(document).ready(function () {
             $.post(form_id, data, function (response) { // This will handle both creating a new program and updating an old one
                 console.log(response);
             }, 'json');
+
+            location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
         });
     }
 
@@ -37,6 +39,12 @@ $(document).ready(function () {
         });
     }
 
+    function getAllPrograms(){  // Get all program names. Used mainly for dependency selection.
+        $.post('get-program-list', null, function(response){
+            var program_list = (response['programs']);
+            console.log(program_list);
+        });
+    }
     getProgramInfo();
     handleProgram();
 });
