@@ -5,7 +5,7 @@
                 <h4 class="modal-title" id="addProgramModalLabel">Add Program</h4>
             </div>
             <div class="modal-body">
-                <form class="form-group-row add-program-form">
+                <form class="form-group-row add-program-form" id="add-program">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name">
                     <br>
@@ -27,7 +27,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submit-program" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-primary modal-submit" id="add-program" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
