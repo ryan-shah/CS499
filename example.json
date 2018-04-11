@@ -3,11 +3,6 @@
     "0": {
       "hour":23,
       "min":59,
-      "days": {
-	  "monday",
-	  "wednesday",
-	  "friday"
-      }
       "programs": {
         "0": {
           "name":  "string",
@@ -38,11 +33,6 @@
     "1": {
       "hour":23,
       "min":59,
-      "days": {
-	  "monday",
-	  "wednesday",
-	  "friday"
-      }
       "programs": {
         "0": {
           "name":  "string",
