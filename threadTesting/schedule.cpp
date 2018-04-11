@@ -86,7 +86,7 @@ void call_from_thread(Program *P) {
 	P->completed = true;
 }
 
-//helper function that takes a string and splits it on " " and returned vector of peices
+//helper function that takes a string and splits it on " " and returns a vector of the peices
 vector<string> split(string x) {
 	string buff;
 	vector<string> result;
@@ -100,8 +100,12 @@ vector<string> split(string x) {
 	return result;
 }
 
+//tracks the process to record memory usage
+//given a program* finds the program name in /proc/PID/stat and records information on it
 void track_process(Program *P) {
+	//wait 1 sec to avoid concurrence errors
 	sleep(1);
+	//find the pid
 	int pid = getPID(P->name);
 	cout << "Tracking process " << P->name << " with PID: " << pid << endl;
 	time_t start = time(NULL);
@@ -112,9 +116,12 @@ void track_process(Program *P) {
 		//open /proc/PID/stat
 		ifstream stat_file( pidPath.c_str() );
 		string line_buff;
+		//get line
 		getline(stat_file, line_buff);
 		stat_file.close();
+		//split the line into its parts
 		vector<string> parts = split(line_buff);
+		//memory is the 22nd entry
 		string mem = parts[22];
 		int memVal = stoi(mem);
 		if(memVal > maxMem) {
@@ -124,18 +131,23 @@ void track_process(Program *P) {
 		pid = getPID(P->name);
 	}
 	time_t end = time(NULL);
+	//calculate run time
 	double time_diff = difftime(end, start);
 	cout << "Program " << P->name << " finished in "<< time_diff << " seconds." << endl;
 	cout << maxMem << endl;
+	//TODO update values in program pointer
 }
 
 /*
+Schedule Class Structure
+-------------------------
 int hour;
 int min;
 vector<string> days;
 vector<Program> programs;
 */
 
+//helper function to see if a vector contains an element
 bool contains(vector<string> list, string el) {
 	for(int i = 0; i < list.size(); i++) {
 		string x = list[i];
@@ -149,10 +161,13 @@ bool contains(vector<string> list, string el) {
 	return false;
 }
 
+//helper function that determines if it is time to run the program
 bool Schedule::timeToRun() {
 	cout << "checking time... " << endl;
 	time_t now = time(NULL);
+	//get local time
 	struct tm nowTM = *localtime(&now);
+	//check to see if the current weekday is in the vector of days to run on
 	switch( nowTM.tm_wday ) {
 		case 0:
 			if(!contains(days, "sunday")) return false;
@@ -178,11 +193,11 @@ bool Schedule::timeToRun() {
 		default:
 			return false;
 	}
-
+	//set time from schedule class to a tm struct
 	struct tm startTime = *localtime(&now);
 	startTime.tm_hour = hour;
 	startTime.tm_min = min;
-
+	//check to see how close the two times are
 	double diff = difftime(now, mktime(&startTime) );
 	cout << abs(diff / 60) << endl;
 	//return true if within 5 mins of execution time
@@ -193,6 +208,7 @@ bool Schedule::timeToRun() {
 	return false;
 }
 
+//runs a schedule
 void Schedule::run() {
 	vector<thread> th;
 	vector<Program*> toRun;
@@ -225,7 +241,8 @@ void Schedule::run() {
 			}
 		}
 	}
-
+	//all programs are able to run, keep popping elements and running them if able
+	//this will run forever if unable to start a process due to memory constraints
 	while( !canRun.empty() ) {
 
 		Program *p = canRun.front();
@@ -239,6 +256,7 @@ void Schedule::run() {
 
 	}
 
+	//wait for all threads to finish
 	for(auto &t : th) {
 		t.join();
 	}
