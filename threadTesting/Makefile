@@ -10,11 +10,17 @@ spydr.o: spydr.cpp schedule.o
 schedule.o: schedule.cpp program.h schedule.h
 	g++ $(CPPFLAGS) -c schedule.cpp
 
-test: threadTest.o
-	g++ $(CPPFLAGS) -o test threadTest.o
+ttest: threadTest.o
+	g++ $(CPPFLAGS) -o ttest threadTest.o
 
 threadTest.o: threadTest.cpp schedule.cpp
 	g++ $(CPPFLAGS) -c threadTest.cpp schedule.cpp program.h schedule.h -o threadTest.o
+
+jtest: jsonparser.o
+	g++ $(CPPFLAGS) -o jtest jsonparser.o
+
+jsonparser.o: jsonparser.cpp
+	g++ $(CPPFLAGS) -c jsonparser.cpp
 
 clean:
 	rm -f *.o

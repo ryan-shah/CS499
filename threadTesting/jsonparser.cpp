@@ -1,9 +1,9 @@
 #include "program.h"
 #include "schedule.h"
-#include "rapidjson/document.h"
+#include "include/rapidjson/document.h"
 #include <cstdio>
 #include <vector>
-#include "rapidjson/filereadstream.h"
+#include "include/rapidjson/filereadstream.h"
 
 using namespace rapidjson;
 
@@ -12,7 +12,7 @@ int main()
 	Program p;
 	Schedule s;
 	// open JSON file
-	FILE* fp = fopen("/Users/mattsmac/CS499/threadTesting/example.json", "r");   // non-Windows use "r", Windows use "rb"
+	FILE* fp = fopen("../example.json", "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
 	{
 		perror("Failed: ");
