@@ -53,15 +53,18 @@ vector<Schedule> createSchedules() {
 }
 
 //TODO Write this function!
+//given a list of schedules, creates a json file in the format shown in ../example.json
+//printing out to stdout would be nice too for debugging purposes
 void writeJson(vector<Schedule> Schedules) {
-	//Write me!
+	//Code goes here
 }
 
 int main()
 {
+	//create a list of schedules
 	vector<Schedule> Schedules = createSchedules();
-
+	//write this to json
 	writeJson(Schedules);
-
+	//we done boi
 	return 0;
 }
