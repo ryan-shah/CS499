@@ -19,8 +19,8 @@ threadTest.o: threadTest.cpp schedule.cpp
 jtest: jsonparser.o
 	g++ $(CPPFLAGS) -o jtest jsonparser.o
 
-jsonparser.o: jsonparser.cpp
-	g++ $(CPPFLAGS) -c jsonparser.cpp
+jsonparser.o: jsonparser2.cpp
+	g++ $(CPPFLAGS) -c jsonparser2.cpp
 
 clean:
 	rm -f *.o

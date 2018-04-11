@@ -4,8 +4,8 @@
       "hour":23,
       "min":59,
       "days": {
-         "monday", "wednesday", "friday"
-      }
+         "0":"monday", "1":"wednesday", "2":"friday"
+      },
       "programs": {
         "0": {
           "name":  "testScript1.sh",

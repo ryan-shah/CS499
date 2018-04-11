@@ -7,12 +7,12 @@
 
 using namespace rapidjson;
 
-int main() 
+int main()
 {
 	Program p;
 	Schedule s;
 	// open JSON file
-	FILE* fp = fopen("../example.json", "r");   // non-Windows use "r", Windows use "rb"
+	FILE* fp = fopen("testJson.json", "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
 	{
 		perror("Failed: ");
@@ -24,8 +24,7 @@ int main()
 	// parse the JSON file
 	d.ParseStream(is);
 	// iterate through the parsed JSON file and retrieve the program information
-	for (Value::ConstMemberIterator itr = d["schedules"].MemberBegin();
-    	    itr != d["schedules"].MemberEnd(); ++itr)
+	for (Value::ConstMemberIterator itr = d["schedules"].MemberBegin(); itr != d["schedules"].MemberEnd(); ++itr)
 	{
     	    printf("Value of member %s is \n",
             itr->name.GetString());
