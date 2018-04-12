@@ -1,3 +1,5 @@
+{{-- This is the form used for the popup that appears when 'Add Runlist' is clicked --}}
+
 <div class="modal fade" id="addRunlistModal" role="dialog" aria-labelledby="addRunlistModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -1,3 +1,5 @@
+{{-- This code is calls on master.blade.php and some files in the partials directory to create the login page --}}
+
 @extends('layouts.master')
 
 @section('title', 'Login')

@@ -1,3 +1,5 @@
+{{-- This is the form used for the popup that appears when 'Add Program' is clicked --}}
+
 <div class="modal fade" id="addProgramModal" role="dialog" aria-labelledby="addProgramModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

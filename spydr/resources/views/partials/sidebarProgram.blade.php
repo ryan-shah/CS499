@@ -1,3 +1,5 @@
+{{-- This displays the information regarding each program in the database --}}
+
 <div class="panel-group individual-program">
     <div class="panel panel-default">
         <div class="panel-heading">
