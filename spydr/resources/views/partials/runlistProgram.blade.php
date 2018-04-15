@@ -1,3 +1,5 @@
+{{-- This displays the information regarding each runlist in the database --}}
+
 <div class="panel-group individual-runlist">
     <div class="panel panel-default">
         <div class="panel-heading">
