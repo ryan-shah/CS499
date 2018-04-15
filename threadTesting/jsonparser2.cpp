@@ -4,14 +4,56 @@
 #include <cstdio>
 #include <vector>
 #include "include/rapidjson/filereadstream.h"
+#include <fstream>
+#include <streambuf>
 
 using namespace rapidjson;
+using namespace std;
 
+//view ../example2.json to see structure
 int main()
 {
 	Program p;
 	Schedule s;
 	// open JSON file
+	ifstream json_file("testJson.json");
+	//read to string
+	string buff( (istreambuf_iterator<char>(json_file)), istreambuf_iterator<char>() );
+	//parse json
+	Document doc;
+	doc.Parse(buff.c_str());
+	//iterate through each schedule
+	const Value& schedules = doc["schedules"];
+	for(auto& v : schedules.GetArray()) {
+		cout << "SCHEDULE: {" << endl;
+		//do stuff with data
+		cout << "\thour: " << v["hour"].GetInt() << endl;
+		cout << "\tmin: " << v["min"].GetInt() << endl;
+		cout << "\tdays: ";
+		for(auto& day : v["days"].GetArray()) {
+			cout << day.GetString() << ", ";
+		}
+		cout << endl;
+		cout << "\tprograms: {" << endl;
+		for(auto& program : v["programs"].GetArray()) {
+			cout << "\t\tProgram: {" << endl;
+			cout << "\t\t\tname: " << program["name"].GetString() << endl;
+			cout << "\t\t\testMemUsage: " << program["estMemUsage"].GetDouble() << endl;
+			cout << "\t\t\testTime: " << program["estTime"].GetDouble() << endl;
+			cout << "\t\t\tpath: " << program["path"].GetString() << endl;
+			cout << "\t\t\tcmdLine: " << program["cmdLine"].GetString() << endl;
+			cout << "\t\t}" << endl;
+		}
+		cout << "\t}" << endl;
+
+		cout << "\tdependencies: {" << endl;
+		for(auto& dependency : v["dependencies"].GetArray()) {
+			cout << "\t\t" << dependency["parent"].GetString() << " is dependant on " << dependency["child"].GetString() << endl;
+		}
+		cout << "\t}" << endl;
+		cout << "}" << endl;
+	}
+/*
 	FILE* fp = fopen("testJson.json", "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
 	{
@@ -46,5 +88,6 @@ int main()
 	    }
 	}
 	fclose(fp);
+*/
 	return 0;
 }

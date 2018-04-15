@@ -1,51 +1,49 @@
 {
-"schedules": {
-    "0": {
+"schedules": [
+   {
       "hour":23,
       "min":59,
-      "days": {
-         "0":"monday", "1":"wednesday", "2":"friday"
-      },
-      "programs": {
-        "0": {
+      "days": [ "monday", "wednesday", "friday" ],
+      "programs": [
+        {
           "name":  "testScript1.sh",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "scripts/testScript1.sh",
           "cmdLine":  "./scripts/testScript1.sh"
         },
-        "1": {
+        {
           "name":  "testScript2.sh",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "scripts/testScript2.sh",
           "cmdLine":  "./scripts/testScript2.sh"
         },
-        "2": {
+        {
           "name":  "testScript3.sh",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "scripts/testScript3.sh",
           "cmdLine":  "./scripts/testScript3.sh"
         },
-        "1": {
+        {
           "name":  "testScript4.sh",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "scripts/testScript4.sh",
           "cmdLine":  "./scripts/testScript4.sh"
         }
-      },
-      "dependencies": {
-        "0": {
+      ],
+      "dependencies": [
+        {
           "parent":  "testScript1.sh",
           "child":  "testScript2.sh"
         },
-        "1": {
+        {
           "parent":  "testScript2.sh",
           "child":  "testScript3.sh"
         }
-      }
+      ]
     }
-  }
+  ]
 }
