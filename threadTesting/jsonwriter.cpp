@@ -12,6 +12,9 @@
 
 using namespace rapidjson;
 using namespace std;
+#include "include/rapidjson/filereadstream.h"
+
+using namespace rapidjson;
 
 //creates dummy schedule data for testing
 vector<Schedule> createSchedules() {
@@ -63,7 +66,6 @@ vector<Schedule> createSchedules() {
 //printing out to stdout would be nice too for debugging purposes
 void writeJson(vector<Schedule> Schedules) {
 	//Code goes here
-	
 	StringBuffer s;
 	PrettyWriter<StringBuffer> writer(s);   // prints in readable JSON format
 	writer.StartObject();
