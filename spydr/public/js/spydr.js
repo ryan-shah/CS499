@@ -9,7 +9,7 @@ $(document).ready(function () {
     function handleProgram() {
         // Generic function for committing forms to the database.
         // This handles adding and editing programs and runlists, all in one function
-        $(".modal-submit").click(function () {
+        $(".program-modal-submit").click(function () {
             // var data = $('.add-program-form').serializeArray();
             var form_id = $(this).attr('id');
             var data = $('form[id=' + form_id + ']').serializeArray();
@@ -32,7 +32,7 @@ $(document).ready(function () {
                 console.log(response);
             }, 'json');
 
-            // location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
         });
     }
 
@@ -70,20 +70,36 @@ $(document).ready(function () {
 
     }
 
+    function handleRunlist(){
+        // Handles modals for adding or editing runlists
+        $(".runlist-modal-submit").click(function(){
+
+            var form_id = $(this).attr('id');
+            var data = $('form[id=' + form_id + ']').serializeArray();
+            console.log(data);
+            $.post(form_id, data, function (response) { // This will handle both creating a new program and updating an old one
+                console.log(response);
+            }, 'json');
+        });
+    }
+
+    function getAllRunlists(){
+        // Gets all the runlists, for adding them to the select box
+        $(".add-runlist-button").click(function() {
+            $.post('get-runlist-list', null, function(response){
+                var add_modal = $('#addRunlistModal');
+                response['programs'].forEach(function (element) {
+                    var new_option = '<option value=' + element.pid + '>' + element.pname + '</option>';
+                    console.log(new_option);
+                    add_modal.find('#runlists').append(new_option);
+                });
+            });
+        });
+    }
+
+    handleRunlist();
     getAllPrograms();
     getProgramInfo();
     handleProgram();
+    getAllRunlists();
 });
-
-
-function editProgram(program_id) {
-
-}
-
-function addRunlist() {
-    alert("Runlist jazz happens");
-}
-
-function editRunlist(runlist_id) {
-    alert("Editing runlist with RPID " + runlist_id);
-}

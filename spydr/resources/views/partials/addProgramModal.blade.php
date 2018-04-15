@@ -16,12 +16,14 @@
                     <input type="text" class="form-control" id="memUsage" name="memUsage">
                     <br>
                     <label for="dependencies">Dependencies:</label>
-                    <select multiple class="form-control" id="dependencies", name="dependencies">
+                    <select multiple class="form-control" id="dependencies" name="dependencies">
                         {{-- This gets populated by an AJAX post request --}}
                     </select>
                     <br>
-                    <label for="runlist">Runlist:</label>
-                    <input type="text" class="form-control" id="runlist" name="runlist">
+                    <label for="runlists">Runlist:</label>
+                    <select class="form-control" id="runlists" name="runlists">
+                        {{-- This gets populated by an AJAX post request --}}
+                    </select>
                     <br>
                     <label for="args">Additional Arguments:</label>
                     <input type="text" class="form-control" id="args" name="args">
@@ -29,7 +31,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary modal-submit" id="add-program" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-primary program-modal-submit" id="add-program" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
