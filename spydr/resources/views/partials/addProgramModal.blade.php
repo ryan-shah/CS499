@@ -16,7 +16,9 @@
                     <input type="text" class="form-control" id="memUsage" name="memUsage">
                     <br>
                     <label for="dependencies">Dependencies:</label>
-                    <input type="text" class="form-control" id="dependencies" name="dependencies">
+                    <select multiple class="form-control" id="dependencies", name="dependencies">
+                        {{-- This gets populated by an AJAX post request --}}
+                    </select>
                     <br>
                     <label for="runlist">Runlist:</label>
                     <input type="text" class="form-control" id="runlist" name="runlist">

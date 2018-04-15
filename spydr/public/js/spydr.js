@@ -7,16 +7,32 @@ $(document).ready(function () {
     });
 
     function handleProgram() {
+        // Generic function for committing forms to the database.
+        // This handles adding and editing programs and runlists, all in one function
         $(".modal-submit").click(function () {
             // var data = $('.add-program-form').serializeArray();
             var form_id = $(this).attr('id');
             var data = $('form[id=' + form_id + ']').serializeArray();
+            var formatted_data = [{name: 'dependencies', value: []}]; // We need to make an object for the dependencies
+
+            // There's probably a cleaner way to add all of these, but this works I guess
+            data.forEach(function(element){
+                if(element['name'] === 'dependencies'){
+                    console.log(formatted_data[0]['value']);
+                    formatted_data[0]['value'].push(element['value']);
+                } else {
+                    formatted_data.push(element);
+                }
+            });
+
+            formatted_data[0]['value'] = JSON.stringify(formatted_data[0]['value']);
             console.log(data);
-            $.post(form_id, data, function (response) { // This will handle both creating a new program and updating an old one
+            console.log(formatted_data);
+            $.post(form_id, formatted_data, function (response) { // This will handle both creating a new program and updating an old one
                 console.log(response);
             }, 'json');
 
-            location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            // location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
         });
     }
 
@@ -40,11 +56,21 @@ $(document).ready(function () {
     }
 
     function getAllPrograms(){  // Get all program names. Used mainly for dependency selection.
-        $.post('get-program-list', null, function(response){
-            var program_list = (response['programs']);
-            console.log(program_list);
+        $(".add-program-button").click(function() {
+            $.post('get-program-list', null, function(response){
+                var add_modal = $('#addProgramModal');
+                response['programs'].forEach(function (element) {
+                    var new_option = '<option value=' + element.pid + '>' + element.pname + '</option>';
+                    console.log(new_option);
+                    add_modal.find('#dependencies').append(new_option);
+                });
+
+            });
         });
+
     }
+
+    getAllPrograms();
     getProgramInfo();
     handleProgram();
 });
