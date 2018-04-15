@@ -108,9 +108,12 @@ void writeJson(vector<Schedule> Schedules) {
 				ctr++;
 				writer.StartObject();
 				writer.Key("parent");
-				writer.String("Parent");
-				writer.Key("child");
+				cout << "writing parent" << endl;
 				writer.String(Schedules[i].programs[j].name.c_str());
+				writer.Key("child");
+				cout << "writing child" << endl;
+				writer.String((Schedules[i].programs[j].dependencies[k]->name).c_str());
+				cout << "finished child" << endl;
 				writer.EndObject();
 			}
 		}

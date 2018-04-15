@@ -5,14 +5,14 @@
       "min":59,
       "programs": {
         "0": {
-          "name":  "string",
+          "name":  "string1",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "string",
           "cmdLine":  "string"
         },
         "1": {
-          "name":  "string",
+          "name":  "string2",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "string",
@@ -35,14 +35,14 @@
       "min":59,
       "programs": {
         "0": {
-          "name":  "string",
+          "name":  "string3",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "string",
           "cmdLine":  "string"
         },
         "1": {
-          "name":  "string",
+          "name":  "string4",
           "estMemUsage": 0.00,
           "estTime": 0.00,
           "path":  "string",
