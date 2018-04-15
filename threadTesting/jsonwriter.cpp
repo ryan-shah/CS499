@@ -35,27 +35,29 @@ vector<Schedule> createSchedules() {
 		//useing actual names of scripts in scripts/ directory
 		vector<Program> programs;
 		for(int j = 1; j < 5; j++) {
-			Program p;
-			p.name = "testScript" + to_string(j) + ".sh";
-			//initialize the dependencies vector
-			vector<Program*> dependencies;
-			p.dependencies = dependencies;
+			Program* p = new Program();
+			p->name = "testScript" + to_string(j) + ".sh";
 			//just dummy values
-			p.estMemUsage = (j* (i+1) )*100;
-			p.estTime = j * 5;
-			p.path = "scripts/" + p.name;
-			p.cmdLine = "./" + p.path;
-			programs.push_back(p);
+			p->estMemUsage = (j* (i+1) )*100;
+			p->estTime = j * 5;
+			p->path = "scripts/" + p->name;
+			p->cmdLine = "./" + p->path;
+			programs.push_back(*p);
 		}
 		//set different dependencies
 		//program[0] will be dependant on program[3] when i == 0
 		//program[1] will be dependant on program[2] when i == 1
 		//program[2] will be dependant on program[1] when i == 2
 		//program[3] will be dependant on program[0] when i == 3
-		programs[i].dependencies.push_back(&s.programs[3-i]);
 		s.programs = programs;
 		//add schedule to list
 		result.push_back(s);
+	}
+
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 4; j++) {
+			result[i].programs[j].dependencies.push_back(&result[i].programs[3-j]);
+		}
 	}
 	return result;
 
@@ -108,12 +110,10 @@ void writeJson(vector<Schedule> Schedules) {
 				ctr++;
 				writer.StartObject();
 				writer.Key("parent");
-				cout << "writing parent" << endl;
 				writer.String(Schedules[i].programs[j].name.c_str());
 				writer.Key("child");
-				cout << "writing child" << endl;
-				writer.String((Schedules[i].programs[j].dependencies[k]->name).c_str());
-				cout << "finished child" << endl;
+				Program* x = Schedules[i].programs[j].dependencies[k];
+				writer.String(x->name.c_str());
 				writer.EndObject();
 			}
 		}
