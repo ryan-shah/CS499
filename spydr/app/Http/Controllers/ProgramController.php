@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dependency;
 use App\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,20 +23,35 @@ class ProgramController extends Controller
         // entry in the database.
 
         $program = new Program;
+
         $program->pname = $request->input('name');
-        $program->estimated_memory_usage = $request->input('memUsage');
+        $program->estimated_memory_usage = $request->input('memUsage', 0);
         $program->estimated_time = 0;
         $program->path = $request->input('path');
-        $program->command_line = $request->input('args');
+        $program->command_line = $request->input('args', '<none>');
 
-//
-//        // Add stuff for dependencies, run lists eventually
-//
         $program->save();
+
+        $pid = $program->pid;
+
+        $dependencies = json_decode($request->input('dependencies'));
+
+        // Add stuff for dependencies, run lists eventually
+        foreach($dependencies as $dep){
+            // Each dependency is its own entry in the request, and will become a new row in the table.
+            $dependency = new Dependency;
+            $dependency->program_id = $pid;
+            $dependency->dependency_id = $dep;
+
+            $dependency->save();
+        }
+
 
         $response = array(
             'status' => 'success',
-            'msg' => $request->input('name'),
+            'msg' => $request->all(),
+            'deps' => $dependencies,
+            'pid' => $pid,
         );
 
         return response()->json($response);
