@@ -19,7 +19,7 @@ threadTest.o: threadTest.cpp schedule.cpp
 jtest: jsonparser.o
 	g++ $(CPPFLAGS) -o jtest jsonparser.o
 
-jsonparser.o: jsonparser.cpp
+json.o: jsonparser.cpp
 	g++ $(CPPFLAGS) -c jsonparser.cpp
 
 clean:
