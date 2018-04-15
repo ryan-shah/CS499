@@ -10,6 +10,7 @@
       },
       "programs": {
         "0": {
+	  "id": 0000,
           "name":  "string",
           "estMemUsage": 0.00,
           "estTime": 0.00,
@@ -17,6 +18,7 @@
           "cmdLine":  "string"
         },
         "1": {
+	  "id": 0001,
           "name":  "string",
           "estMemUsage": 0.00,
           "estTime": 0.00,
@@ -26,20 +28,26 @@
       },
       "dependencies": {
         "0": {
-          "parent":  "string",
-          "child":  "string"
+          "parent":  0000,
+          "child":  0001
         },
         "1": {
-          "parent":  "string",
-          "child":  "string"
+          "parent":  0000,
+          "child":  0001
         }
       }
     },
     "1": {
       "hour":23,
       "min":59,
+      "days": {
+         "0":"monday",
+         "1":"wednesday",
+         "2":"friday"
+      },
       "programs": {
         "0": {
+	  "id": 0000,
           "name":  "string",
           "estMemUsage": 0.00,
           "estTime": 0.00,
@@ -47,6 +55,7 @@
           "cmdLine":  "string"
         },
         "1": {
+	  "id": 0001,
           "name":  "string",
           "estMemUsage": 0.00,
           "estTime": 0.00,
@@ -56,12 +65,12 @@
       },
       "dependencies": {
         "0": {
-          "parent":  "string",
-          "child":  "string"
+          "parent":  0000,
+          "child":  0001
         },
         "1": {
-          "parent":  "string",
-          "child":  "string"
+          "parent":  0000,
+          "child":  0001
         }
       }
     }
