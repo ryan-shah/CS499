@@ -7,12 +7,12 @@
 
 using namespace rapidjson;
 
-int main() 
+int main()
 {
 	Program p;
 	Schedule s;
 	// open JSON file
-	FILE* fp = fopen("../example.json", "r");   // non-Windows use "r", Windows use "rb"
+	FILE* fp = fopen("testJson.json", "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
 	{
 		perror("Failed: ");

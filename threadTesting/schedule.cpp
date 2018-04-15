@@ -135,7 +135,9 @@ void track_process(Program *P) {
 	double time_diff = difftime(end, start);
 	cout << "Program " << P->name << " finished in "<< time_diff << " seconds." << endl;
 	cout << maxMem << endl;
-	//TODO update values in program pointer
+
+	P->estMemUsage = maxMem;
+	P->estTime = time_diff;
 }
 
 /*
