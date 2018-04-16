@@ -28,6 +28,8 @@ Route::post('/edit-program', 'ProgramController@editProgram');
 Route::post('/get-program-list', 'ProgramController@getAllPrograms');
 Route::post('/add-runlist', 'RunlistController@addRunlist');
 
+Route::get('/test', 'JsonController@testfunction');
+
 Route::get('/login', function () {
     return view('login');
 });
