@@ -19,7 +19,7 @@ int main()
 	Schedule s;
 	int ctr;
 	// open JSON file
-	FILE* fp = fopen(/*"testJson.json"*/"/Users/mattsmac/CS499/threadTesting/output.json", "r");   // non-Windows use "r", Windows use "rb"
+	FILE* fp = fopen("../example.json", "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
 	{
 		perror("Failed: ");
