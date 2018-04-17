@@ -1,8 +1,8 @@
 {
 "schedules": {
     "0": {
-      "hour":0,
-      "min":15,
+      "hour":18,
+      "min":50,
       "days": {
          "0":"monday",
          "1":"wednesday",
