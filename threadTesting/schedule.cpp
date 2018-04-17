@@ -84,6 +84,7 @@ void call_from_thread(Program *P) {
 	int status = system( P->cmdLine.c_str() );
 	P->returnVal = status;
 	P->completed = true;
+	cout << "status set to true for program " << P->name << endl;
 }
 
 //helper function that takes a string and splits it on " " and returns a vector of the peices
@@ -206,7 +207,6 @@ bool Schedule::timeToRun() {
 	if( abs(diff / 60) < 5 ) {
 		return true;
 	}
-
 	return false;
 }
 
