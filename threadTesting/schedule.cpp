@@ -124,7 +124,7 @@ void track_process(Program *P) {
 		vector<string> parts = split(line_buff);
 		//memory is the 22nd entry
 		string mem = parts[22];
-		int memVal = stoi(mem);
+		long int memVal = stol(mem);
 		if(memVal > maxMem) {
 			maxMem = memVal;
 		}
