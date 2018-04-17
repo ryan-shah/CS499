@@ -216,6 +216,18 @@ void Schedule::run() {
 	vector<Program*> toRun;
 	queue<Program*> canRun;
 
+	//reset dependencies
+	for(int i = 0; i < programs.size(); i++) {
+		for(int j = 0; j < programs[i].dependencies.size(); j++) {
+			for(int k = 0; k < programs.size(); k++) {
+				if(programs[i].dependencies[j]->id == programs[k].id) {
+					programs[i].dependencies[j] = &programs[k];
+					break;
+				}
+			}
+		}
+	}
+
 	//make pointers for toRun of all programs in schedule
 	for(int i = 0; i < programs.size(); i++) {
 		toRun.push_back(&programs[i]);
