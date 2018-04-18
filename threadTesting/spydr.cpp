@@ -15,29 +15,28 @@ void run_schedule(Schedule* s) {
 }
 
 int main() {
-
 	while(1) {
 		vector<thread> th;
 		vector<Schedule> ss = readJson("testJson.json");
 		for(int i = 0; i < ss.size(); i++) {
 			if(ss[i].timeToRun()) {
 				cout << "time to run" << endl;
-				ss[i].run();
+/*				ss[i].run();
 				if(ss[i].timeToRun()) {
 					cout << "extra sleepy" << endl;
 					sleep(10*60);
-				}
-//				th.push_back(thread(run_schedule, &ss[i]));
+				}*/
+				th.push_back(thread(run_schedule, &ss[i]));
 			}
 		}
-		/*
 		if(th.size() > 0) {
 			for(auto &t : th) {
 				t.join();
 			}
-			th.clear();
+			writeJson(ss, "ouput.json");
+		} else {
+			sleep(5*60);
 		}
-		*/
 	}
 
 }

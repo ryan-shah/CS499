@@ -138,7 +138,7 @@ void track_process(Program *P) {
 	cout << maxMem << endl;
 
 	P->estMemUsage = maxMem;
-	P->estTime = time_diff;
+	P->estTime = time_diff+1;
 }
 
 /*
