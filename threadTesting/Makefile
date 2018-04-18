@@ -4,7 +4,7 @@ LDFLAGS=-g
 spydr: spydr.o schedule.o
 	g++ $(CPPFLAGS) -o spydr spydr.o schedule.o
 
-spydr.o: spydr.cpp schedule.o
+spydr.o: spydr.cpp schedule.o json.h
 	g++ $(CPPFLAGS) -c spydr.cpp
 
 schedule.o: schedule.cpp program.h schedule.h
@@ -19,7 +19,7 @@ threadTest.o: threadTest.cpp schedule.cpp
 jtest: jsonparser.o
 	g++ $(CPPFLAGS) -o jtest jsonparser.o
 
-jsonparser.o: jsonparser.cpp
+json.o: jsonparser.cpp
 	g++ $(CPPFLAGS) -c jsonparser.cpp
 
 clean:

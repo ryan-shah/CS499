@@ -71,22 +71,34 @@ void writeJson(vector<Schedule> Schedules) {
 	StringBuffer s;
 	PrettyWriter<StringBuffer> writer(s);   // prints in readable JSON format
 	writer.StartObject();
-	writer.Key("schedules");
-	writer.StartObject();
+	//writer.Key("schedules");
+	//writer.StartObject();
+	string mon = "monday";
+	string wed = "wednesday";
+	string fri = "friday";
 	// create an object for each schedule
 	for (unsigned i = 0; i < Schedules.size(); i++) {
-		writer.Key(to_string(i).c_str());
+		/*writer.Key(to_string(i).c_str());
 		writer.StartObject();
 		writer.Key("hour");
 		writer.Uint(Schedules[i].hour);
 		writer.Key("min");
                 writer.Uint(Schedules[i].min);
+		writer.Key("days");
+		writer.StartArray();
+		writer.String(mon.c_str());
+		writer.String(wed.c_str());
+		writer.String(fri.c_str());
+		writer.EndArray();*/
 		writer.Key("programs");
-		writer.StartObject();
+		//writer.StartObject();
+		writer.StartArray();
 		// create an object for each program
 		for (unsigned j = 0; j < Schedules[i].programs.size(); j++) {
-			writer.Key(to_string(j).c_str());
+			//writer.Key(to_string(j).c_str());
 			writer.StartObject();
+			writer.Key("id");
+			writer.Uint(Schedules[i].programs[j].id);
 			writer.Key("name");
 			writer.String(Schedules[i].programs[j].name.c_str());
 			writer.Key("estMemUsage");
@@ -99,8 +111,9 @@ void writeJson(vector<Schedule> Schedules) {
                         writer.String(Schedules[i].programs[j].cmdLine.c_str());
 			writer.EndObject();
 		}
-		writer.EndObject();
-		writer.Key("dependencies");
+		//writer.EndObject();
+		writer.EndArray();
+		/*writer.Key("dependencies");
 		writer.StartObject();
 		int ctr = 0;
 		// create an object for each dependency
@@ -117,11 +130,11 @@ void writeJson(vector<Schedule> Schedules) {
 				writer.EndObject();
 			}
 		}
-		writer.EndObject();
+		writer.EndObject();*/
 			
-		writer.EndObject(); 
+		//writer.EndObject(); 
 	}
-	writer.EndObject();
+	//writer.EndObject();
 	writer.EndObject();
 	// print the JSON (for testing)
 	cout << s.GetString() << endl;
@@ -129,7 +142,7 @@ void writeJson(vector<Schedule> Schedules) {
 	// write a JSON file
 	string json (s.GetString(), s.GetSize());
 
-	ofstream of ("output.json");
+	ofstream of ("output2.json");
 	of << json;
 	if (!of.good()) throw runtime_error ("Can't write the JSON string to the file!");
 	

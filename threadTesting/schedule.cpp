@@ -84,6 +84,7 @@ void call_from_thread(Program *P) {
 	int status = system( P->cmdLine.c_str() );
 	P->returnVal = status;
 	P->completed = true;
+	cout << "status set to true for program " << P->name << endl;
 }
 
 //helper function that takes a string and splits it on " " and returns a vector of the peices
@@ -123,7 +124,7 @@ void track_process(Program *P) {
 		vector<string> parts = split(line_buff);
 		//memory is the 22nd entry
 		string mem = parts[22];
-		int memVal = stoi(mem);
+		long int memVal = stol(mem);
 		if(memVal > maxMem) {
 			maxMem = memVal;
 		}
@@ -137,7 +138,7 @@ void track_process(Program *P) {
 	cout << maxMem << endl;
 
 	P->estMemUsage = maxMem;
-	P->estTime = time_diff;
+	P->estTime = time_diff+1;
 }
 
 /*
@@ -206,7 +207,6 @@ bool Schedule::timeToRun() {
 	if( abs(diff / 60) < 5 ) {
 		return true;
 	}
-
 	return false;
 }
 
@@ -215,6 +215,18 @@ void Schedule::run() {
 	vector<thread> th;
 	vector<Program*> toRun;
 	queue<Program*> canRun;
+
+	//reset dependencies
+	for(int i = 0; i < programs.size(); i++) {
+		for(int j = 0; j < programs[i].dependencies.size(); j++) {
+			for(int k = 0; k < programs.size(); k++) {
+				if(programs[i].dependencies[j]->id == programs[k].id) {
+					programs[i].dependencies[j] = &programs[k];
+					break;
+				}
+			}
+		}
+	}
 
 	//make pointers for toRun of all programs in schedule
 	for(int i = 0; i < programs.size(); i++) {
