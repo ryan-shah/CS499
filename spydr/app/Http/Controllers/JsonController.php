@@ -48,14 +48,14 @@ class JsonController extends Controller
             $did_parsed = $this->parseHash($did);
 
             //If the Dependency does not already exist in the array
-            if (!isset($schedules["schedules"][$rpid_parsed]["dependency"][$did_parsed])) {
+            if (!isset($schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed])) {
 
                 //Grab the row of the Dependancy table associated with the program in question
                 $dependency = Dependency::select('did')->find($program->pid);
 
                 //Add the dependency information
-                $schedules["schedules"][$rpid_parsed]["dependency"][$did_parsed]["parent"] = $dependency->program_id;
-                $schedules["schedules"][$rpid_parsed]["dependency"][$did_parsed]["child"] = $dependency->dependency_id;
+                $schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed]["parent"] = $dependency->program_id;
+                $schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed]["child"] = $dependency->dependency_id;
 
             }
 
@@ -65,7 +65,7 @@ class JsonController extends Controller
         else {
 
             //Add an empty dependency into the JSON
-            $schedules["schedules"][$rpid_parsed]["dependency"] = [];
+            $schedules["schedules"][$rpid_parsed]["dependencies"] = [];
 
         }
 
@@ -118,14 +118,16 @@ class JsonController extends Controller
                 $schedules["schedules"][$rpid_parsed]["hour"] = date('H', strtotime($runlist_parameter->rtime));
                 $schedules["schedules"][$rpid_parsed]["min"] = date('i', strtotime($runlist_parameter->rtime));
 
-                //Add hard-coded days
-                $schedules["schedules"][$rpid_parsed]["days"]["0"] = "sunday";
-                $schedules["schedules"][$rpid_parsed]["days"]["1"] = "monday";
-                $schedules["schedules"][$rpid_parsed]["days"]["2"] = "tuesday";
-                $schedules["schedules"][$rpid_parsed]["days"]["3"] = "wednesday";
-                $schedules["schedules"][$rpid_parsed]["days"]["4"] = "thursday";
-                $schedules["schedules"][$rpid_parsed]["days"]["5"] = "friday";
-                $schedules["schedules"][$rpid_parsed]["days"]["6"] = "saturday";
+                //Add hard-coded days [NEEDS TO BE UPDATED ONCE DAYS ARE IMPLEMENTED TO THE WEBSITE]
+                $schedules["schedules"][$rpid_parsed]["days"] = [
+                    '0' => "sunday",
+                    '1' => "monday",
+                    '2' => "tuesday",
+                    '3' => "wednesday",
+                    '4' => "thursday",
+                    '5' => "friday",
+                    '6' => "saturday"
+                ];
 
                 //Add the program information
                 $this->addProgram($runlist, $schedules, $rpid_parsed, $program, $pid);
