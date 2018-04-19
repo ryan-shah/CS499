@@ -3,11 +3,11 @@
     "0": {
       "hour":23,
       "min":59,
-      "days": {
-         "0":"monday",
-         "1":"wednesday",
-         "2":"friday"
-      },
+      "days": [
+         "monday",
+         "wednesday",
+         "friday"
+      ],
       "programs": {
         "0": {
 	      "id": 0,
@@ -40,11 +40,11 @@
     "1": {
       "hour":23,
       "min":59,
-      "days": {
-         "0":"monday",
-         "1":"wednesday",
-         "2":"friday"
-      },
+      "days": [
+         "monday",
+         "wednesday",
+         "friday"
+      ],
       "programs": {
         "0": {
 	      "id": 0,
