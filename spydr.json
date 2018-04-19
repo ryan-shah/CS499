@@ -1,1 +1,28 @@
-{"schedules":{"1":{"hour":"20","min":"00","days":["sunday","monday","tuesday","wednesday","thursday","friday","saturday"],"programs":{"15":{"id":15,"name":"fghjk","estMemUsage":89098,"estTime":0,"path":"polk","cmdLine":"890"}},"dependency":[]}}}
+{
+    "schedules": {
+        "1": {
+            "hour": "20",
+            "min": "00",
+            "days": [
+                "sunday",
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday",
+                "saturday"
+            ],
+            "programs": {
+                "15": {
+                    "id": 15,
+                    "name": "fghjk",
+                    "estMemUsage": 89098,
+                    "estTime": 0,
+                    "path": "polk",
+                    "cmdLine": "890"
+                }
+            },
+            "dependency": []
+        }
+    }
+}

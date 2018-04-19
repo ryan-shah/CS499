@@ -166,7 +166,7 @@ class JsonController extends Controller
         }
 
         //Create the content of the file
-        $spydr = json_encode($this->createJson());
+        $spydr = json_encode($this->createJson(), JSON_PRETTY_PRINT);
 
         //Replace the previous spydr.json with the updated version
         File::put($filename, (string)$spydr);
