@@ -6,27 +6,10 @@ use App\Dependency;
 use App\Program;
 use App\Runlist;
 use App\RunlistParameter;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class JsonController extends Controller
 {
-
-    public function retrieveRunlists(){
-
-        //Collect Runlists and organize them w.r.t. columns
-        $runlists = Runlist::all();
-        foreach ($runlists as $r){
-            $r->rid;
-            $r->program_id;
-            $r->runlist_id;
-        }
-
-        return $runlists;
-
-    }
 
     public function parseHash($input){
 
@@ -96,8 +79,8 @@ class JsonController extends Controller
             "schedules" => []
         ];
 
-        //Retrieve the Runlist table
-        $runlists = $this->retrieveRunlists();
+        //Retrieve the entire Runlist table
+        $runlists = Runlist::all();
 
         //Go through each row of the Runlist table
         foreach($runlists as $runlist){
@@ -119,15 +102,15 @@ class JsonController extends Controller
                 $schedules["schedules"][$rpid_parsed]["min"] = date('i', strtotime($runlist_parameter->rtime));
 
                 //Add hard-coded days [NEEDS TO BE UPDATED ONCE DAYS ARE IMPLEMENTED TO THE WEBSITE]
-                $schedules["schedules"][$rpid_parsed]["days"] = [
-                    '0' => "sunday",
-                    '1' => "monday",
-                    '2' => "tuesday",
-                    '3' => "wednesday",
-                    '4' => "thursday",
-                    '5' => "friday",
-                    '6' => "saturday"
-                ];
+                $schedules["schedules"][$rpid_parsed]["days"] = array(
+                    1 => "sunday",
+                    2 => "monday",
+                    3 => "tuesday",
+                    4 => "wednesday",
+                    5 => "thursday",
+                    6 => "friday",
+                    7 => "saturday"
+                );
 
                 //Add the program information
                 $this->addProgram($runlist, $schedules, $rpid_parsed, $program, $pid);
@@ -159,21 +142,16 @@ class JsonController extends Controller
 
         //Delete spydr.json if it exists, as well as make sure it is deleted afterwards,
         //since File::delete() does not check for deletion
-        $filename = storage_path("../../spydr.json");
-
-        //echo (string)$filename;
-
+        $filename = storage_path("../../threadTesting/spydr.json");
         while (File::exists($filename)){
             File::delete($filename);
         }
 
-        //Create the content of the file
+        //Create the content of spydr.json
         $spydr = json_encode($this->createJson(), JSON_PRETTY_PRINT);
 
         //Replace the previous spydr.json with the updated version
-        File::put($filename, (string)$spydr);
-
-        return $spydr;
+        File::put($filename, $spydr);
 
     }
 
