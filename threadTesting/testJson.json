@@ -1,13 +1,13 @@
 {
 "schedules": {
     "0": {
-      "hour":21,
-      "min":7,
+      "hour":12,
+      "min":45,
       "days": {
          "1":"monday",
          "2":"wednesday",
          "3":"thursday",
-	 "4":"tuesday"
+	 "4":"friday"
       },
       "programs": {
         "0": {

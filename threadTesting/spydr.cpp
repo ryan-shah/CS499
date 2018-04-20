@@ -14,18 +14,36 @@ void run_schedule(Schedule* s) {
 	}
 }
 
-int main() {
+//input -in input.json -out ouput.json
+int main(int argc, char *argv[]) {
+	if( argc != 5) {
+		cout << "usage: " << argv[0] << " -in </path/to/input.json> -out </path/to/output.json>" << endl;
+		return 1;
+	}
+	string infile = "";
+	string outfile = "";
+
+	for(int i = 0; i < 4; i++) {
+		if(string(argv[i]) == "-in") {
+			infile = argv[i+1];
+		}
+		if(string(argv[i]) == "-out") {
+			outfile = argv[i+1];
+		}
+	}
+
 	while(1) {
 		vector<thread> th;
-		vector<Schedule> ss = readJson("testJson.json");
+		vector<Schedule> ss;
+		try {
+			ss = readJson(infile);
+		} catch (...) {
+			cout << "unable to read json: " << infile << endl;
+			return 1;
+		}
 		for(int i = 0; i < ss.size(); i++) {
 			if(ss[i].timeToRun()) {
 				cout << "time to run" << endl;
-/*				ss[i].run();
-				if(ss[i].timeToRun()) {
-					cout << "extra sleepy" << endl;
-					sleep(10*60);
-				}*/
 				th.push_back(thread(run_schedule, &ss[i]));
 			}
 		}
@@ -33,7 +51,12 @@ int main() {
 			for(auto &t : th) {
 				t.join();
 			}
-			writeJson(ss, "ouput.json");
+			try {
+				writeJson(ss, outfile);
+			} catch (...) {
+				cout << "unable to write to file: " << outfile << endl;
+				return 1;
+			}
 		} else {
 			sleep(5*60);
 		}
