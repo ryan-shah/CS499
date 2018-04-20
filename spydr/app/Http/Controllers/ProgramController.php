@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Dependency;
 use App\Program;
+use App\Runlist;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
 {
@@ -46,12 +46,19 @@ class ProgramController extends Controller
             $dependency->save();
         }
 
+        $rid = $request->input('runlists', -1);
+        if($rid != -1){
+            $runlist = new Runlist;
+            $runlist->program_id = $pid;
+            $runlist->runlist_id = $rid;
+
+            $runlist->save();
+        }
 
         $response = array(
             'status' => 'success',
             'msg' => $request->all(),
-            'deps' => $dependencies,
-            'pid' => $pid,
+            'rid' => $rid,
         );
 
         return response()->json($response);

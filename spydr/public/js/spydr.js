@@ -32,7 +32,7 @@ $(document).ready(function () {
                 console.log(response);
             }, 'json');
 
-            location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            // location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
         });
     }
 
@@ -56,7 +56,6 @@ $(document).ready(function () {
     }
 
     function getAllPrograms(){  // Get all program names. Used mainly for dependency selection.
-        $(".add-program-button").click(function() {
             $.post('get-program-list', null, function(response){
                 var add_modal = $('#addProgramModal');
                 response['programs'].forEach(function (element) {
@@ -66,8 +65,6 @@ $(document).ready(function () {
                 });
 
             });
-        });
-
     }
 
     function handleRunlist(){
@@ -85,12 +82,13 @@ $(document).ready(function () {
 
     function getAllRunlists(){
         // Gets all the runlists, for adding them to the select box
-        $(".add-runlist-button").click(function() {
+        $(".add-program-button").click(function() {
             $.post('get-runlist-list', null, function(response){
-                var add_modal = $('#addRunlistModal');
-                response['programs'].forEach(function (element) {
-                    var new_option = '<option value=' + element.pid + '>' + element.pname + '</option>';
-                    console.log(new_option);
+                var add_modal = $('#addProgramModal');
+                add_modal.find('#runlists').append('<option value=-1></option>');
+                response['runlists'].forEach(function (element) {
+                    console.log(element);
+                    var new_option = '<option value=' + element.rpid + '>' + element.rname + '</option>';
                     add_modal.find('#runlists').append(new_option);
                 });
             });
