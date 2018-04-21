@@ -63,8 +63,8 @@
       }
     },
     "1": {
-      "hour":12,
-      "min":45,
+      "hour":14,
+      "min":20,
       "days": {
          "0":"sunday",
          "1":"saturday",
@@ -102,7 +102,15 @@
           "estTime": 20,
           "path":  "scripts/testScript4.sh",
           "cmdLine":  "./scripts/testScript4.sh"
-        }
+        },
+	"4": {
+	  "id": 4,
+	  "name": "mytestscript.php",
+	  "estMemUsage": 10,
+	  "estTime": 10,
+	  "path": "scripts/mytestscript.php",
+	  "cmdLine": "php scripts/mytestscript.php"
+	}
       },
       "dependencies": {
         "0": {

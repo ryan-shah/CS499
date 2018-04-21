@@ -31,7 +31,7 @@ void Schedule::get_scripts() {
 
 }
 
-//given a name of a program searches through /proc/PID/stat files to find
+//given a name of a program searches through /proc/PID/cmd files to find
 //a process with the same name
 //returns PID if successfull else -1
 int getPID(string name) {
@@ -48,28 +48,18 @@ int getPID(string name) {
 
 			if(id > 0) {
 				//found a directory with a PID
-				string statPath = string("/proc/") + dirp->d_name + "/stat";
-				//open /proc/PID/stat and read line
-				ifstream statFile(statPath.c_str());
-				string statLine;
-				getline(statFile, statLine);
-				statFile.close();
+				string cmdPath = string("/proc/") + dirp->d_name + "/cmdline";
+				//open /proc/PID/cmdline and read line
+				ifstream cmdFile(cmdPath.c_str());
+				string cmdLine;
+				getline(cmdFile, cmdLine);
+				cmdFile.close();
 
-				//line format is: PID (processName) ...
-				//get processName by searching and trimming based on ( )
-				if( !statLine.empty() ) {
-					size_t pos = statLine.find('\0');
-					if (pos != string::npos)
-						statLine = statLine.substr(0, pos);
-					pos = statLine.find('(');
-					statLine = statLine.substr(pos + 1);
-					pos = statLine.find(')');
-					statLine = statLine.substr(0, pos);
-					//if name = found pid success!
-					if(name == statLine) {
-						pid = id;
-						break;
-					}
+				//line format is the command lline
+				//see if line contains the name of the script were searching for
+				if(cmdLine.find(name) != string::npos) {
+					pid = id;
+					break;
 				}
 			}
 		}
@@ -102,7 +92,7 @@ vector<string> split(string x) {
 }
 
 //tracks the process to record memory usage
-//given a program* finds the program name in /proc/PID/stat and records information on it
+//given a program* finds the program name then opens /proc/PID/stat and records information on it
 void track_process(Program *P) {
 	//wait 1 sec to avoid concurrence errors
 	sleep(1);
@@ -238,6 +228,7 @@ void Schedule::run() {
 		for(int i = 0; i < toRun.size(); i++) {
 			//if program can be run remove from toRun and add to canRun
 			if( toRun[i]->canRun() ) {
+				cout << toRun[i]->name << " can run" << endl;
 				canRun.push( toRun[i] );
 				toRun.erase( toRun.begin()+i );
 				break;

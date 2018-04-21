@@ -58,6 +58,7 @@ vector<Schedule> readJson(string filename)
 	vector<Schedule> ss;
 	Schedule s;
 	Program p;
+	int s_index = 0;
 	// open JSON file
 	FILE* fp = fopen(filename.c_str(), "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
@@ -91,6 +92,7 @@ vector<Schedule> readJson(string filename)
                 p.cmdLine = d["schedules"][itr->name.GetString()]["programs"][itr2->name.GetString()]["cmdLine"].GetString();
                 s.programs.push_back(p);   // add the program information to the vector of programs
 	    }
+	    ss.push_back(s);
 	    for (Value::ConstMemberIterator itr4 = d["schedules"][itr->name.GetString()]["dependencies"].MemberBegin();
 		itr4 != d["schedules"][itr->name.GetString()]["dependencies"].MemberEnd(); ++itr4) {
 		int p_id = d["schedules"][itr->name.GetString()]["dependencies"][itr4->name.GetString()]["parent"].GetInt();
@@ -98,17 +100,17 @@ vector<Schedule> readJson(string filename)
 		Program* parent;
 		for( int i = 0; i < s.programs.size(); i++) {
 			if(s.programs[i].id == p_id) {
-				parent = &s.programs[i];
+				parent = &ss[s_index].programs[i];
 				break;
 			}
 		}
 		for( int i = 0; i < s.programs.size(); i++) {
 			if(s.programs[i].id == c_id) {
-				parent->dependencies.push_back(&s.programs[i]);
+				parent->dependencies.push_back(&ss[s_index].programs[i]);
 			}
 		}
 	    }
-	    ss.push_back(s);
+	    s_index++;
 	    s.programs.clear();
             s.days.clear();
 	    p.dependencies.clear();
