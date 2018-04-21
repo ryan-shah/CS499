@@ -29,6 +29,7 @@ Route::post('/get-program-list', 'ProgramController@getAllPrograms');
 Route::post('/add-runlist', 'RunlistController@addRunlist');
 
 Route::get('/test', 'JsonController@updateJson'); //TO BE REMOVED FOR PROJECT COMPLETION
+Route::get('/output', 'DatabaseController@updateDatabase');
 
 Route::get('/login', function () {
     return view('login');

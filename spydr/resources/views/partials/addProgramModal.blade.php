@@ -27,7 +27,7 @@
                         {{-- This gets populated by an AJAX post request --}}
                     </select>
                     <br>
-                    <label for="args">Additional Arguments:</label>
+                    <label for="args">Command Line Argument(s):</label>
                     <input type="text" class="form-control" id="args" name="args">
                 </form>
             </div>
