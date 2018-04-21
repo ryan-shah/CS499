@@ -25,7 +25,6 @@ public:
 	bool canRun() {
 		for(int i = 0; i < dependencies.size(); i++) {
 			if(dependencies[i]->completed == false) {
-//				cout << "can't run " << name << " due to dep: " << dependencies[i]->name << endl;
 				return false;
 			}
 		}

@@ -12,7 +12,7 @@
 using namespace rapidjson;
 using namespace std;
 
-//given a list of schedules, creates a json file in the format shown in ../example.json
+//given a schedule, creates a json file in the format shown in ../example.json
 //printing out to stdout would be nice too for debugging purposes
 void writeJson(Schedule Sched, string outfile) {
         //Code goes here
@@ -53,6 +53,7 @@ void writeJson(Schedule Sched, string outfile) {
 
 }
 
+//given a json file, reads the results into a vector of schedules
 vector<Schedule> readJson(string filename)
 {
 	vector<Schedule> ss;
@@ -118,29 +119,3 @@ vector<Schedule> readJson(string filename)
 	fclose(fp);
 	return ss;
 }
-/*
-int main() {
-	vector<Schedule> test = readJson("testJson.json");
-	for(int i = 0; i < test.size(); i++) {
-		cout << "hour: " << test[i].hour << endl;
-		cout << "min: " << test[i].min << endl;
-		cout << "days: ";
-		for(int j = 0; j < test[i].days.size(); j++) {
-			cout << test[i].days[j] << ", ";
-		}
-		cout << endl;
-		for(int j = 0; j < test[i].programs.size(); j++) {
-			Program p = test[i].programs[j];
-			cout << "\tname: " << p.name << endl;
-			cout << "\tid: " << p.id << endl;
-			cout << "\testMemUsage: " << p.estMemUsage << endl;
-			cout << "\testTime: " << p.estTime << endl;
-			cout << "\tpath: " << p.path << endl;
-			cout << "\tcmdLine: " << p.cmdLine << endl;
-			for(int k = 0; k < p.dependencies.size(); k++) {
-				cout << "\t\tid: " << p.dependencies[k]->id << endl;
-			}
-		}
-	}
-}
-*/

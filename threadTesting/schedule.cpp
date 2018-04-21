@@ -15,23 +15,7 @@
 
 using namespace std;
 
-//loads test scripts from scripts dir
-//replace with json file reading
-void Schedule::get_scripts() {
-
-	for(int i = 1; i < 5; i++) {
-		Program p;
-		p.name = "testScript"+to_string(i)+".sh";
-		p.estMemUsage = 0;
-		p.estTime = i * 5;
-		p.path = "scripts/testScript"+to_string(i)+".sh";
-		p.cmdLine = "./" + p.path;
-		programs.push_back(p);
-	}
-
-}
-
-//given a name of a program searches through /proc/PID/cmd files to find
+//given a name of a program searches through /proc/PID/cmdline files to find
 //a process with the same name
 //returns PID if successfull else -1
 int getPID(string name) {
@@ -57,7 +41,7 @@ int getPID(string name) {
 
 				//line format is the command lline
 				//see if line contains the name of the script were searching for
-				if(cmdLine.find(name) != string::npos) {
+				if(cmdLine.find(name) != string::npos && cmdLine.find("sh") != 0) {
 					pid = id;
 					break;
 				}
@@ -74,7 +58,6 @@ void call_from_thread(Program *P) {
 	int status = system( P->cmdLine.c_str() );
 	P->returnVal = status;
 	P->completed = true;
-	cout << "status set to true for program " << P->name << endl;
 }
 
 //helper function that takes a string and splits it on " " and returns a vector of the peices
@@ -125,20 +108,12 @@ void track_process(Program *P) {
 	//calculate run time
 	double time_diff = difftime(end, start);
 	cout << "Program " << P->name << " finished in "<< time_diff << " seconds." << endl;
+	cout << "Program " << P->name << " used "<< maxMem << " bytes of memory." << endl;
 	cout << maxMem << endl;
 
 	P->estMemUsage = maxMem;
 	P->estTime = time_diff+1;
 }
-
-/*
-Schedule Class Structure
--------------------------
-int hour;
-int min;
-vector<string> days;
-vector<Program> programs;
-*/
 
 //helper function to see if a vector contains an element
 bool contains(vector<string> list, string el) {
@@ -192,7 +167,6 @@ bool Schedule::timeToRun() {
 	startTime.tm_min = min;
 	//check to see how close the two times are
 	double diff = difftime(now, mktime(&startTime) );
-	cout << abs(diff / 60) << endl;
 	//return true if within 5 mins of execution time
 	if( abs(diff / 60) < 5 ) {
 		return true;
@@ -207,6 +181,7 @@ void Schedule::run() {
 	queue<Program*> canRun;
 
 	//reset dependencies
+	/*
 	for(int i = 0; i < programs.size(); i++) {
 		for(int j = 0; j < programs[i].dependencies.size(); j++) {
 			for(int k = 0; k < programs.size(); k++) {
@@ -217,6 +192,7 @@ void Schedule::run() {
 			}
 		}
 	}
+	*/
 
 	//make pointers for toRun of all programs in schedule
 	for(int i = 0; i < programs.size(); i++) {
@@ -228,7 +204,6 @@ void Schedule::run() {
 		for(int i = 0; i < toRun.size(); i++) {
 			//if program can be run remove from toRun and add to canRun
 			if( toRun[i]->canRun() ) {
-				cout << toRun[i]->name << " can run" << endl;
 				canRun.push( toRun[i] );
 				toRun.erase( toRun.begin()+i );
 				break;

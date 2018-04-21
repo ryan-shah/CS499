@@ -2,6 +2,7 @@
 #include "schedule.h"
 #include "unistd.h"
 #include "json.h"
+#include "config.h"
 #include <thread>
 
 using namespace std;
@@ -15,20 +16,20 @@ void run_schedule(Schedule* s, string file) {
 	}
 	if(s->timeToRun()) {
 		cout << "finished in < 10 mins, waiting for another 10 to avoid running twice" << endl;
-		sleep(10*60);
+		sleep(2 * RUN_WAIT_TIME);
 	}
 }
 
 //input -in input.json -out ouput.json
 int main(int argc, char *argv[]) {
-	if( argc != 5) {
+	if( argc > 5) {
 		cout << "usage: " << argv[0] << " -in </path/to/input.json> -out </path/to/output.json>" << endl;
 		return 1;
 	}
-	string infile = "";
-	string outfile = "";
+	string infile = INPUT_FILE_DEFAULT;
+	string outfile = OUTPUT_FILE_DEFAULT;
 
-	for(int i = 0; i < 4; i++) {
+	for(int i = 0; i < argc - 1; i++) {
 		if(string(argv[i]) == "-in") {
 			infile = argv[i+1];
 		}
@@ -57,7 +58,7 @@ int main(int argc, char *argv[]) {
 				t.join();
 			}
 		} else {
-			sleep(5*60);
+			sleep(RUN_WAIT_TIME);
 		}
 	}
 
