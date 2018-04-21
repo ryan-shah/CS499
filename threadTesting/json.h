@@ -14,34 +14,32 @@ using namespace std;
 
 //given a list of schedules, creates a json file in the format shown in ../example.json
 //printing out to stdout would be nice too for debugging purposes
-void writeJson(vector<Schedule> Schedules, string outfile) {
+void writeJson(Schedule Sched, string outfile) {
         //Code goes here
         StringBuffer s;
         PrettyWriter<StringBuffer> writer(s);   // prints in readable JSON format
         writer.StartObject();
         // create an object for each schedule
-        for (unsigned i = 0; i < Schedules.size(); i++) {
-                writer.Key("programs");
-                writer.StartArray();
-                // create an object for each program
-                for (unsigned j = 0; j < Schedules[i].programs.size(); j++) {
-                        writer.StartObject();
-                        writer.Key("id");
-                        writer.Uint(Schedules[i].programs[j].id);
-                        writer.Key("name");
-                        writer.String(Schedules[i].programs[j].name.c_str());
-                        writer.Key("estMemUsage");
-                        writer.Uint(Schedules[i].programs[j].estMemUsage);
-                        writer.Key("estTime");
-                        writer.Uint(Schedules[i].programs[j].estTime);
-                        writer.Key("path");
-                        writer.String(Schedules[i].programs[j].path.c_str());
-                        writer.Key("cmdLine");
-                        writer.String(Schedules[i].programs[j].cmdLine.c_str());
-                        writer.EndObject();
-                }
-                writer.EndArray();
+        writer.Key("programs");
+        writer.StartArray();
+        // create an object for each program
+        for (unsigned j = 0; j < Sched.programs.size(); j++) {
+                writer.StartObject();
+                writer.Key("id");
+                writer.Uint(Sched.programs[j].id);
+                writer.Key("name");
+                writer.String(Sched.programs[j].name.c_str());
+                writer.Key("estMemUsage");
+                writer.Uint(Sched.programs[j].estMemUsage);
+                writer.Key("estTime");
+                writer.Uint(Sched.programs[j].estTime);
+                writer.Key("path");
+                writer.String(Sched.programs[j].path.c_str());
+                writer.Key("cmdLine");
+                writer.String(Sched.programs[j].cmdLine.c_str());
+                writer.EndObject();
         }
+        writer.EndArray();
         writer.EndObject();
         // print the JSON (for testing)
 //        cout << s.GetString() << endl;

@@ -2,7 +2,7 @@
 "schedules": {
     "0": {
       "hour": 13,
-      "min": 04,
+      "min": 4,
       "days": {
          "1":"monday",
          "2":"wednesday",
@@ -44,11 +44,11 @@
         },
 	"4": {
 	  "id": 4,
-	  "name": "SOPIUpdate_uk.php";
+	  "name": "SOPIUpdate_uk.php",
 	  "estMemUsage": 6,
 	  "estTime": 0,
-	  "path": "scripts/SOPIUpdate_uk.php";
-	  "cmdLine": "php scripts/SOPIUpdate_uk.php";
+	  "path": "scripts/SOPIUpdate_uk.php",
+	  "cmdLine": "php scripts/SOPIUpdate_uk.php"
 	}
       },
       "dependencies": {
@@ -63,8 +63,8 @@
       }
     },
     "1": {
-      "hour":23,
-      "min":10,
+      "hour":12,
+      "min":45,
       "days": {
          "0":"sunday",
          "1":"saturday",

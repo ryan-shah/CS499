@@ -6,8 +6,13 @@
 
 using namespace std;
 
-void run_schedule(Schedule* s) {
+void run_schedule(Schedule* s, string file) {
 	s->run();
+	try{
+		writeJson(*s, file);
+	} catch (...) {
+		cout << "could not write to file" << endl;
+	}
 	if(s->timeToRun()) {
 		cout << "finished in < 10 mins, waiting for another 10 to avoid running twice" << endl;
 		sleep(10*60);
@@ -44,18 +49,12 @@ int main(int argc, char *argv[]) {
 		for(int i = 0; i < ss.size(); i++) {
 			if(ss[i].timeToRun()) {
 				cout << "time to run" << endl;
-				th.push_back(thread(run_schedule, &ss[i]));
+				th.push_back(thread(run_schedule, &ss[i], outfile));
 			}
 		}
 		if(th.size() > 0) {
 			for(auto &t : th) {
 				t.join();
-			}
-			try {
-				writeJson(ss, outfile);
-			} catch (...) {
-				cout << "unable to write to file: " << outfile << endl;
-				return 1;
 			}
 		} else {
 			sleep(5*60);

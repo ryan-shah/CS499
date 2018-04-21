@@ -23,4 +23,4 @@ json.o: jsonparser.cpp
 	g++ $(CPPFLAGS) -c jsonparser.cpp
 
 clean:
-	rm -f *.o
+	rm -f *.o spydr ttest jtest
