@@ -10,6 +10,7 @@ class Program {
 
 public:
 	//variables
+	int id;
 	string name;
 	vector<Program*> dependencies;
 	double estMemUsage;

@@ -1,0 +1,127 @@
+{
+"schedules": {
+    "0": {
+      "hour": 13,
+      "min": 4,
+      "days": {
+         "1":"monday",
+         "2":"wednesday",
+         "3":"thursday",
+	 "4":"friday"
+      },
+      "programs": {
+        "0": {
+	  "id": 0,
+          "name":  "testScript1.sh",
+          "estMemUsage": 5,
+          "estTime": 5,
+          "path":  "scripts/testScript1.sh",
+          "cmdLine":  "./scripts/testScript1.sh"
+        },
+        "1": {
+	  "id": 1,
+          "name":  "testScript2.sh",
+          "estMemUsage": 5,
+          "estTime": 10,
+          "path":  "scripts/testScript2.sh",
+          "cmdLine":  "./scripts/testScript2.sh"
+        },
+        "2": {
+	  "id": 2,
+          "name":  "testScript3.sh",
+          "estMemUsage": 5,
+          "estTime": 15,
+          "path":  "scripts/testScript3.sh",
+          "cmdLine":  "./scripts/testScript3.sh"
+        },
+        "3": {
+	  "id": 3,
+          "name":  "testScript4.sh",
+          "estMemUsage": 5,
+          "estTime": 20,
+          "path":  "scripts/testScript4.sh",
+          "cmdLine":  "./scripts/testScript4.sh"
+        },
+	"4": {
+	  "id": 4,
+	  "name": "SOPIUpdate_uk.php",
+	  "estMemUsage": 6,
+	  "estTime": 0,
+	  "path": "scripts/SOPIUpdate_uk.php",
+	  "cmdLine": "php scripts/SOPIUpdate_uk.php"
+	}
+      },
+      "dependencies": {
+        "0": {
+          "parent":  0,
+          "child":  1
+        },
+        "1": {
+          "parent":  2,
+          "child":  3
+        }
+      }
+    },
+    "1": {
+      "hour":21,
+      "min":13,
+      "days": {
+         "0":"sunday",
+         "1":"saturday",
+         "2":"friday"
+      },
+      "programs": {
+        "0": {
+	  "id": 0,
+          "name":  "testScript1.sh",
+          "estMemUsage": 5,
+          "estTime": 5,
+          "path":  "scripts/testScript1.sh",
+          "cmdLine":  "./scripts/testScript1.sh"
+        },
+        "1": {
+	  "id": 1,
+          "name":  "testScript2.sh",
+          "estMemUsage": 5,
+          "estTime": 10,
+          "path":  "scripts/testScript2.sh",
+          "cmdLine":  "./scripts/testScript2.sh"
+        },
+        "2": {
+	  "id": 2,
+          "name":  "testScript3.sh",
+          "estMemUsage": 5,
+          "estTime": 15,
+          "path":  "scripts/testScript3.sh",
+          "cmdLine":  "./scripts/testScript3.sh"
+        },
+        "3": {
+	  "id": 3,
+          "name":  "testScript4.sh",
+          "estMemUsage": 5,
+          "estTime": 20,
+          "path":  "scripts/testScript4.sh",
+          "cmdLine":  "./scripts/testScript4.sh"
+        },
+	"4": {
+	  "id": 4,
+	  "name": "mytestscript.php",
+	  "estMemUsage": 10,
+	  "estTime": 10,
+	  "path": "scripts/mytestscript.php",
+	  "cmdLine": "php scripts/mytestscript.php"
+	}
+      },
+      "dependencies": {
+        "0": {
+          "parent":  0,
+          "child":  1
+        },
+        "1": {
+          "parent":  2,
+          "child":  3
+        }
+      }
+    }
+  }
+}

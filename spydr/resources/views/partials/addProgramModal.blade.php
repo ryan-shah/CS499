@@ -1,3 +1,5 @@
+{{-- This is the form used for the popup that appears when 'Add Program' is clicked --}}
+
 <div class="modal fade" id="addProgramModal" role="dialog" aria-labelledby="addProgramModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -25,7 +27,7 @@
                         {{-- This gets populated by an AJAX post request --}}
                     </select>
                     <br>
-                    <label for="args">Additional Arguments:</label>
+                    <label for="args">Command Line Argument(s):</label>
                     <input type="text" class="form-control" id="args" name="args">
                 </form>
             </div>

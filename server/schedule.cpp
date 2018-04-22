@@ -15,23 +15,7 @@
 
 using namespace std;
 
-//loads test scripts from scripts dir
-//replace with json file reading
-void Schedule::get_scripts() {
-
-	for(int i = 1; i < 5; i++) {
-		Program p;
-		p.name = "testScript"+to_string(i)+".sh";
-		p.estMemUsage = 0;
-		p.estTime = i * 5;
-		p.path = "scripts/testScript"+to_string(i)+".sh";
-		p.cmdLine = "./" + p.path;
-		programs.push_back(p);
-	}
-
-}
-
-//given a name of a program searches through /proc/PID/stat files to find
+//given a name of a program searches through /proc/PID/cmdline files to find
 //a process with the same name
 //returns PID if successfull else -1
 int getPID(string name) {
@@ -48,28 +32,18 @@ int getPID(string name) {
 
 			if(id > 0) {
 				//found a directory with a PID
-				string statPath = string("/proc/") + dirp->d_name + "/stat";
-				//open /proc/PID/stat and read line
-				ifstream statFile(statPath.c_str());
-				string statLine;
-				getline(statFile, statLine);
-				statFile.close();
+				string cmdPath = string("/proc/") + dirp->d_name + "/cmdline";
+				//open /proc/PID/cmdline and read line
+				ifstream cmdFile(cmdPath.c_str());
+				string cmdLine;
+				getline(cmdFile, cmdLine);
+				cmdFile.close();
 
-				//line format is: PID (processName) ...
-				//get processName by searching and trimming based on ( )
-				if( !statLine.empty() ) {
-					size_t pos = statLine.find('\0');
-					if (pos != string::npos)
-						statLine = statLine.substr(0, pos);
-					pos = statLine.find('(');
-					statLine = statLine.substr(pos + 1);
-					pos = statLine.find(')');
-					statLine = statLine.substr(0, pos);
-					//if name = found pid success!
-					if(name == statLine) {
-						pid = id;
-						break;
-					}
+				//line format is the command lline
+				//see if line contains the name of the script were searching for
+				if(cmdLine.find(name) != string::npos && cmdLine.find("sh") != 0) {
+					pid = id;
+					break;
 				}
 			}
 		}
@@ -101,7 +75,7 @@ vector<string> split(string x) {
 }
 
 //tracks the process to record memory usage
-//given a program* finds the program name in /proc/PID/stat and records information on it
+//given a program* finds the program name then opens /proc/PID/stat and records information on it
 void track_process(Program *P) {
 	//wait 1 sec to avoid concurrence errors
 	sleep(1);
@@ -123,7 +97,7 @@ void track_process(Program *P) {
 		vector<string> parts = split(line_buff);
 		//memory is the 22nd entry
 		string mem = parts[22];
-		int memVal = stoi(mem);
+		long int memVal = stol(mem);
 		if(memVal > maxMem) {
 			maxMem = memVal;
 		}
@@ -134,18 +108,12 @@ void track_process(Program *P) {
 	//calculate run time
 	double time_diff = difftime(end, start);
 	cout << "Program " << P->name << " finished in "<< time_diff << " seconds." << endl;
+	cout << "Program " << P->name << " used "<< maxMem << " bytes of memory." << endl;
 	cout << maxMem << endl;
-	//TODO update values in program pointer
-}
 
-/*
-Schedule Class Structure
--------------------------
-int hour;
-int min;
-vector<string> days;
-vector<Program> programs;
-*/
+	P->estMemUsage = maxMem;
+	P->estTime = time_diff+1;
+}
 
 //helper function to see if a vector contains an element
 bool contains(vector<string> list, string el) {
@@ -199,12 +167,10 @@ bool Schedule::timeToRun() {
 	startTime.tm_min = min;
 	//check to see how close the two times are
 	double diff = difftime(now, mktime(&startTime) );
-	cout << abs(diff / 60) << endl;
 	//return true if within 5 mins of execution time
 	if( abs(diff / 60) < 5 ) {
 		return true;
 	}
-
 	return false;
 }
 
@@ -213,6 +179,20 @@ void Schedule::run() {
 	vector<thread> th;
 	vector<Program*> toRun;
 	queue<Program*> canRun;
+
+	//reset dependencies - use if programs are not running after their dependencies finish
+	/*
+	for(int i = 0; i < programs.size(); i++) {
+		for(int j = 0; j < programs[i].dependencies.size(); j++) {
+			for(int k = 0; k < programs.size(); k++) {
+				if(programs[i].dependencies[j]->id == programs[k].id) {
+					programs[i].dependencies[j] = &programs[k];
+					break;
+				}
+			}
+		}
+	}
+	*/
 
 	//make pointers for toRun of all programs in schedule
 	for(int i = 0; i < programs.size(); i++) {
