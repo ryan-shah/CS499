@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e11578e5-8c27-42cb-874c-e874a8fbebff" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spydr/app/Http/Controllers/DatabaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/app/Http/Controllers/DatabaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JsonController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JsonController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="126" column="51" lean-forward="true" selection-start-line="126" selection-start-column="51" selection-end-line="126" selection-end-column="51" />
+            <state relative-caret-position="1800">
+              <caret line="144" column="46" selection-start-line="144" selection-start-column="46" selection-end-line="144" selection-end-column="46" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
@@ -30,32 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProgramController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/ProgramController.php">
+      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="86" column="10" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="example.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spydr/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="27" column="69" lean-forward="true" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
-              <folding>
-                <element signature="e#391#407#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -88,14 +68,11 @@
         <option value="$PROJECT_DIR$/spydr/public/css/style.css" />
         <option value="$PROJECT_DIR$/spydr/public/js/spydr.js" />
         <option value="$PROJECT_DIR$/spydr/resources/views/layouts/modals.blade.php" />
-        <option value="$PROJECT_DIR$/spydr/resources/views/partials/addProgramModal.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/addRunlistModal.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/editProgramModal.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/editRunlistModal.blade.php" />
-        <option value="$PROJECT_DIR$/spydr/resources/views/partials/sidebarProgram.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/runlistProgram.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/runlists.blade.php" />
-        <option value="$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/statistics.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/topbar.blade.php" />
         <option value="$PROJECT_DIR$/spydr/resources/views/partials/topbarLogin.blade.php" />
@@ -106,8 +83,13 @@
         <option value="$PROJECT_DIR$/spydr/vendor/laravel/framework/src/Illuminate/Support/Facades/Storage.php" />
         <option value="$PROJECT_DIR$/example.json" />
         <option value="$PROJECT_DIR$/spydr.json" />
-        <option value="$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php" />
+        <option value="$PROJECT_DIR$/spydr/resources/views/partials/addProgramModal.blade.php" />
         <option value="$PROJECT_DIR$/spydr/routes/web.php" />
+        <option value="$PROJECT_DIR$/threadTesting/output.json" />
+        <option value="$PROJECT_DIR$/spydr/resources/views/partials/sidebarProgram.blade.php" />
+        <option value="$PROJECT_DIR$/spydr/app/Http/Controllers/DatabaseController.php" />
+        <option value="$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php" />
+        <option value="$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php" />
       </list>
     </option>
   </component>
@@ -217,6 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -267,19 +250,6 @@
               <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS499" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="spydr" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS499" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="spydr" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS499" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="spydr" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -288,14 +258,6 @@
               <item name="spydr" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CS499" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="spydr" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="layouts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
@@ -315,10 +277,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="threadTesting&#9;FILE&#9;file:///home/natini/Desktop/CS499 Project/CS499/threadTesting" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -356,27 +318,29 @@
       <workItem from="1523810849487" duration="39953000" />
       <workItem from="1524002547543" duration="21237000" />
       <workItem from="1524067011763" duration="811000" />
-      <workItem from="1524169646586" duration="9879000" />
+      <workItem from="1524169646586" duration="11333000" />
+      <workItem from="1524272504453" duration="3010000" />
+      <workItem from="1524318177096" duration="11237000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99336000" />
+    <option name="totallyTimeSpent" value="115037000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1280" height="774" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2234375" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50078124" side_tool="true" weight="0.32935917" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49921876" weight="0.3283582" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2234375" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -385,6 +349,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,34 +359,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spydr/database/migrations/2018_04_06_003257_create_runlists_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/database/migrations/2018_04_06_003348_create_dependencies_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/database/migrations/2018_04_04_182748_create_runlist_parameters_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spydr/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -490,31 +427,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/addRunlistModal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="71" selection-start-column="71" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/editProgramModal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="64" selection-start-column="64" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/editRunlistModal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="72" selection-start-column="72" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/sidebarProgram.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="73" selection-start-column="73" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -529,13 +445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="54" selection-start-column="54" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="116" selection-start-column="116" selection-end-column="116" />
         </state>
       </provider>
     </entry>
@@ -595,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/database/migrations/2018_04_04_183732_create_programs_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spydr/database/migrations/2018_04_04_182748_create_runlist_parameters_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -613,13 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/addProgramModal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -644,50 +539,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spydr.json">
+    <entry file="file://$PROJECT_DIR$/spydr.json" />
+    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/editProgramModal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+          <caret column="64" selection-start-column="64" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/addProgramModal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="62" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/threadTesting/spydr.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/example2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/threadTesting/spydr.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/ProgramController.php">
+    <entry file="file://$PROJECT_DIR$/spydr/database/migrations/2018_04_04_183732_create_programs_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="86" column="10" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
+        <state relative-caret-position="315">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/threadTesting/output.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/DatabaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/sidebarProgram.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/RunlistController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/spydr/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="69" lean-forward="true" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
+        <state relative-caret-position="330">
+          <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
           <folding>
             <element signature="e#391#407#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/ProgramController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="86" column="10" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/addRunlistModal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="71" selection-start-column="71" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="126" column="51" lean-forward="true" selection-start-line="126" selection-start-column="51" selection-end-line="126" selection-end-column="51" />
+        <state relative-caret-position="1800">
+          <caret line="144" column="46" selection-start-line="144" selection-start-column="46" selection-end-line="144" selection-end-column="46" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spydr/resources/views/partials/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
         </state>
       </provider>
     </entry>

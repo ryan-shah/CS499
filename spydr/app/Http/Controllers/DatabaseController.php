@@ -14,7 +14,7 @@ class DatabaseController extends Controller
         //we need to update the database with that information
 
         //Read and convert output.json into an array
-        $filename = storage_path("../../threadTesting/output.json");
+        $filename = storage_path("../../server/output.json");
         $input = json_decode(File::get($filename), TRUE);
 
         //Iterate through each program

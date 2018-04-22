@@ -142,7 +142,7 @@ class JsonController extends Controller
 
         //Delete spydr.json if it exists, as well as make sure it is deleted afterwards,
         //since File::delete() does not check for deletion
-        $filename = storage_path("../../threadTesting/spydr.json");
+        $filename = storage_path("../../server/spydr.json");
         while (File::exists($filename)){
             File::delete($filename);
         }
