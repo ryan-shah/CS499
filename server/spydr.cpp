@@ -7,11 +7,13 @@
 
 using namespace std;
 
+//used to tell website to read output json
 void ping_website() {
 	string cmd = string("wget ") + WEBSITE_READ_OUTPUT;
 	system(cmd.c_str());
 }
 
+//called in thread to run a schedule and write to json & call website's read function
 void run_schedule(Schedule* s, string file) {
 	s->run();
 	try{
