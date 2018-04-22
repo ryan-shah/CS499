@@ -63,8 +63,8 @@
       }
     },
     "1": {
-      "hour":14,
-      "min":20,
+      "hour":21,
+      "min":10,
       "days": {
          "0":"sunday",
          "1":"saturday",

@@ -9,4 +9,8 @@ int RUN_WAIT_TIME = 5 * 60;
 string INPUT_FILE_DEFAULT = "spydr.json";
 string OUTPUT_FILE_DEFAULT = "output.json";
 
+
+//URL to call when the website needs to read output file
+string WEBSITE_READ_OUTPUT = "https://localhost:8000/output";
+
 #endif

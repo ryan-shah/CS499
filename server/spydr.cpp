@@ -7,10 +7,16 @@
 
 using namespace std;
 
+void ping_website() {
+	string cmd = string("wget ") + WEBSITE_READ_OUTPUT;
+	system(cmd.c_str());
+}
+
 void run_schedule(Schedule* s, string file) {
 	s->run();
 	try{
 		writeJson(*s, file);
+		ping_website();
 	} catch (...) {
 		cout << "could not write to file" << endl;
 	}
