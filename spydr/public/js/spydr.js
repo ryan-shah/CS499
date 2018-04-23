@@ -72,16 +72,35 @@ $(document).ready(function () {
             });
     }
 
+
     function handleRunlist(){
         // Handles modals for adding or editing runlists
-        $(".runlist-modal-submit").click(function(){
-
+        // Generic function for committing forms to the database.
+        // This handles adding and editing programs and runlists, all in one function
+        $(".runlist-modal-submit").click(function () {
+            // var data = $('.add-program-form').serializeArray();
             var form_id = $(this).attr('id');
             var data = $('form[id=' + form_id + ']').serializeArray();
+            var formatted_data = [{name: 'days', value: []}]; // We need to make an object for the days
+
+            // There's probably a cleaner way to add all of these, but this works I guess
+            data.forEach(function(element){
+                if(element['name'] === 'days'){
+                    console.log(formatted_data[0]['value']);
+                    formatted_data[0]['value'].push(element['value']);
+                } else {
+                    formatted_data.push(element);
+                }
+            });
+
+            formatted_data[0]['value'] = JSON.stringify(formatted_data[0]['value']);
             console.log(data);
-            $.post(form_id, data, function (response) { // This will handle both creating a new program and updating an old one
+            console.log(formatted_data);
+            $.post(form_id, formatted_data, function (response) { // This will handle both creating a new program and updating an old one
                 console.log(response);
             }, 'json');
+
+            location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
         });
     }
 
