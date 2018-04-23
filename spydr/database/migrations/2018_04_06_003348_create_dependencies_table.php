@@ -21,8 +21,8 @@ class CreateDependenciesTable extends Migration
         });
 
         Schema::table('dependencies', function(Blueprint $table) {
-            $table->foreign('program_id')->references('pid')->on('programs');
-            $table->foreign('dependency_id')->references('pid')->on('programs');
+            $table->foreign('program_id')->references('pid')->on('programs')->onDelete('cascade');
+            $table->foreign('dependency_id')->references('pid')->on('programs')->onDelete('cascade');
         });
     }
 

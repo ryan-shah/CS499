@@ -22,11 +22,13 @@ Route::get('/', function () {
     return view('home', ['programs' => $programs], ['runlist_parameters' => $runlist_parameters]);
 });
 
-// These are routes. When laravel gets a post request at fsaid uri, it executes the action function
+// These are routes. When laravel gets a post request at said uri, it executes the action function
 Route::post('/add-program', 'ProgramController@addNewProgram');
 Route::post('/get-program/{id}', 'ProgramController@displayProgramInfo');
 Route::post('/edit-program', 'ProgramController@editProgram');
 Route::post('/get-program-list', 'ProgramController@getAllPrograms');
+Route::post('/delete-program', 'ProgramController@deleteProgram');
+
 Route::post('/add-runlist', 'RunlistController@addRunlist');
 Route::post('/get-runlist-list', 'RunlistController@getAllRunlists');
 

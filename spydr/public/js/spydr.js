@@ -11,6 +11,7 @@ $(document).ready(function () {
         // This handles adding and editing programs and runlists, all in one function
         $(".program-modal-submit").click(function () {
             // var data = $('.add-program-form').serializeArray();
+            debugger;
             var form_id = $(this).attr('id');
             var data = $('form[id=' + form_id + ']').serializeArray();
             var formatted_data = [{name: 'dependencies', value: []}]; // We need to make an object for the dependencies
@@ -32,7 +33,11 @@ $(document).ready(function () {
                 console.log(response);
             }, 'json');
 
-            // location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            alert(form_id);
+
+            setTimeout(function(){
+              //  location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            }, 1000);
         });
     }
 
@@ -80,6 +85,18 @@ $(document).ready(function () {
         });
     }
 
+    function deleteProgram() {
+        $('.delete-program').click(function () {
+            var id = $().attr('id');
+            var data = $('form[id="edit-program"]').serializeArray();
+            console.log(data);
+            $.post('delete-program', data , function(response){
+               console.log(response);
+          });
+        });
+
+    }
+
     function getAllRunlists(){
         // Gets all the runlists, for adding them to the select box
         $(".add-program-button").click(function() {
@@ -100,4 +117,6 @@ $(document).ready(function () {
     getProgramInfo();
     handleProgram();
     getAllRunlists();
+    deleteProgram();
+
 });

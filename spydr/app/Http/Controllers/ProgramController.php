@@ -83,7 +83,6 @@ class ProgramController extends Controller
         $program = Program::find($request->input('pid'));
         $program->pname = $request->input('name');
         $program->estimated_memory_usage = $request->input('memUsage');
-        $program->estimated_time = 0;
         $program->path = $request->input('path');
         $program->command_line = $request->input('args');
 
@@ -103,6 +102,17 @@ class ProgramController extends Controller
             'programs' => $programs
         );
 
+        return response()->json($response);
+    }
+
+    public function deleteProgram(Request $request) {
+        // Delete a program with the requested id
+        $program = Program::find($request->input('pid'));
+        $msg = $program->forceDelete();
+
+        $response = array(
+            'status' => $msg,
+        );
         return response()->json($response);
     }
 }

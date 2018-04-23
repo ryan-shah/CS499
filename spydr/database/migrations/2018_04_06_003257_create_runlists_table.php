@@ -21,7 +21,7 @@ class CreateRunlistsTable extends Migration
         });
 
         Schema::table('runlists', function(Blueprint $table) {
-            $table->foreign('program_id')->references('pid')->on('programs');
+            $table->foreign('program_id')->references('pid')->on('programs')->onDelete('cascade');
             $table->foreign('runlist_id')->references('rpid')->on('runlist_parameters');
         });
     }
