@@ -52,7 +52,7 @@ $(document).ready(function () {
                 edit_modal.find('#path').val(program['path']);
                 edit_modal.find('#memUsage').val(program['estimated_memory_usage']);
                 edit_modal.find('#dependencies').val("TODO");
-                edit_modal.find('#runlists').val(runlist['rpid']);
+                // edit_modal.find('#runlists');
                 edit_modal.find('#args').val(program['command_line']);
                 edit_modal.find('#pid').val(program_id);
                 edit_modal.modal('show');
