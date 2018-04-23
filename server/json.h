@@ -1,3 +1,16 @@
+/*
+
+This file holds the writeJson and readjson functions.
+
+If changes are made to the json structure's that the website reads/writes, then these functions will need to
+	be updated to respond to that
+
+This program will read in a json with a strucure like ../example.json and write out in the form of ../example2.json
+
+These functions are called from spydr.cpp
+
+*/
+
 #include "program.h"
 #include "schedule.h"
 #include "include/rapidjson/document.h"
@@ -56,10 +69,14 @@ void writeJson(Schedule Sched, string outfile) {
 //given a json file, reads the results into a vector of schedules
 vector<Schedule> readJson(string filename)
 {
+	//vector to return
 	vector<Schedule> ss;
+	//create programs and schedules outside of for loops to prevent pointer errors due to local memory deletion
 	Schedule s;
 	Program p;
+	//index to calculate what schedule we're on
 	int s_index = 0;
+
 	// open JSON file
 	FILE* fp = fopen(filename.c_str(), "r");   // non-Windows use "r", Windows use "rb"
 	if (fp == NULL)
@@ -67,21 +84,27 @@ vector<Schedule> readJson(string filename)
 		perror("Failed: ");
 		return ss;
 	}
+	//read in json file
 	char readBuffer[65536];
 	FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+	//create rapidJson structure
 	Document d;
 	// parse the JSON file
 	d.ParseStream(is);
 	// iterate through the parsed JSON file and retrieve the program information
+	// for each schedule ...
 	for (Value::ConstMemberIterator itr = d["schedules"].MemberBegin();
     	    itr != d["schedules"].MemberEnd(); ++itr)
 	{
+	    //pull out schedule information
 	    s.hour = d["schedules"][itr->name.GetString()]["hour"].GetInt();
 	    s.min = d["schedules"][itr->name.GetString()]["min"].GetInt();
+	    //get all days
 	    for (Value::ConstMemberIterator itr3 = d["schedules"][itr->name.GetString()]["days"].MemberBegin();
 		itr3 != d["schedules"][itr->name.GetString()]["days"].MemberEnd(); ++itr3) {
 		s.days.push_back(d["schedules"][itr->name.GetString()]["days"][itr3->name.GetString()].GetString());
 	    }
+	    //get all programs
 	    for (Value::ConstMemberIterator itr2 = d["schedules"][itr->name.GetString()]["programs"].MemberBegin();
 		itr2 != d["schedules"][itr->name.GetString()]["programs"].MemberEnd(); ++itr2)
 	    {
@@ -93,11 +116,15 @@ vector<Schedule> readJson(string filename)
                 p.cmdLine = d["schedules"][itr->name.GetString()]["programs"][itr2->name.GetString()]["cmdLine"].GetString();
                 s.programs.push_back(p);   // add the program information to the vector of programs
 	    }
+	    //add schedule to list of schedules
 	    ss.push_back(s);
+	    //read in dependencies
 	    for (Value::ConstMemberIterator itr4 = d["schedules"][itr->name.GetString()]["dependencies"].MemberBegin();
 		itr4 != d["schedules"][itr->name.GetString()]["dependencies"].MemberEnd(); ++itr4) {
+		//get parent and child id's
 		int p_id = d["schedules"][itr->name.GetString()]["dependencies"][itr4->name.GetString()]["parent"].GetInt();
 		int c_id = d["schedules"][itr->name.GetString()]["dependencies"][itr4->name.GetString()]["child"].GetInt();
+		//find parent by id (pointer points to ss[s_index].programs instead of s.programs to prevent memory errors/pointer problems)
 		Program* parent;
 		for( int i = 0; i < s.programs.size(); i++) {
 			if(s.programs[i].id == p_id) {
@@ -105,13 +132,16 @@ vector<Schedule> readJson(string filename)
 				break;
 			}
 		}
+		//find child and set parent to point to those programs
 		for( int i = 0; i < s.programs.size(); i++) {
 			if(s.programs[i].id == c_id) {
 				parent->dependencies.push_back(&ss[s_index].programs[i]);
 			}
 		}
 	    }
+	    //s_index tracks what shcedule we're dealing with. increment it for next schedule
 	    s_index++;
+	    //reset vectors in s & p
 	    s.programs.clear();
             s.days.clear();
 	    p.dependencies.clear();

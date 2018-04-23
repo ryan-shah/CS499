@@ -1,3 +1,12 @@
+/*
+
+This file contains all of the functions relavent to a Schedule. Mainly, running a schedule and tracking all of its
+	processes. This is the 'meat' of the program and does a lot of the work.
+
+Each function has comments describing its purpose, future work on cluster processes can be made in the track_cluster function
+
+*/
+
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -12,8 +21,12 @@
 #include <cmath>
 #include "program.h"
 #include "schedule.h"
+#include "config.h"
 
 using namespace std;
+
+//config variable
+Config schedule_conf;
 
 //given a name of a program searches through /proc/PID/cmdline files to find
 //a process with the same name
@@ -53,11 +66,11 @@ int getPID(string name) {
 }
 
 //helper function that runs a given program using system
+//tracks the return value of the program
 void call_from_thread(Program *P) {
 	cout << "running program: " << P->name << endl;
 	int status = system( P->cmdLine.c_str() );
 	P->returnVal = status;
-	P->completed = true;
 }
 
 //helper function that takes a string and splits it on " " and returns a vector of the peices
@@ -74,8 +87,17 @@ vector<string> split(string x) {
 	return result;
 }
 
+//TODO: tracks a cluster process
+//called if Program.isCluster is true
+//should work in the same manner as track_process but use cluster connection instead of /proc/stat
+void track_cluster(Program *P) {
+	sleep(1);
+	// ...
+}
+
 //tracks the process to record memory usage
 //given a program* finds the program name then opens /proc/PID/stat and records information on it
+// sets the Program.completed value to true
 void track_process(Program *P) {
 	//wait 1 sec to avoid concurrence errors
 	sleep(1);
@@ -107,12 +129,14 @@ void track_process(Program *P) {
 	time_t end = time(NULL);
 	//calculate run time
 	double time_diff = difftime(end, start);
+	//print values
 	cout << "Program " << P->name << " finished in "<< time_diff << " seconds." << endl;
 	cout << "Program " << P->name << " used "<< maxMem << " bytes of memory." << endl;
 	cout << maxMem << endl;
-
+	//set values
 	P->estMemUsage = maxMem;
 	P->estTime = time_diff+1;
+	P->completed = true;
 }
 
 //helper function to see if a vector contains an element
@@ -168,7 +192,7 @@ bool Schedule::timeToRun() {
 	//check to see how close the two times are
 	double diff = difftime(now, mktime(&startTime) );
 	//return true if within 5 mins of execution time
-	if( abs(diff / 60) < 5 ) {
+	if( diff < schedule_conf.RUN_WAIT_TIME ) {
 		return true;
 	}
 	return false;
@@ -215,7 +239,11 @@ void Schedule::run() {
 			canRun.pop();
 			if( p->checkMem() ) {
 				th.push_back(thread(call_from_thread, p) );
-				th.push_back(thread(track_process, p) );
+				if(!p->isCluster) {
+					th.push_back(thread(track_process, p) );
+				} else {
+					th.push_back(thread(track_cluster, p) );
+				}
 			} else {
 				canRun.push(p);
 			}
