@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Dependency;
 use App\Program;
 use App\Runlist;
+use App\RunlistParameter;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -69,10 +70,13 @@ class ProgramController extends Controller
         // programs table to populate the modal
 
         $program = Program::find($id);
+        $runlist = Runlist::select('runlist_id')->where('program_id', $id)->get();
+        $runlist_id = RunlistParameter::find($runlist);
 
         $response = array(
             'status' => 'success',
             'program' => json_encode($program), // Pass back the program as a json, to be easily parsed by jQuery
+            'runlist' => json_encode($runlist_id),
         );
 
         return response()->json($response);

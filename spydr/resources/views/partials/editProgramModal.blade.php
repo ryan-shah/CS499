@@ -20,8 +20,10 @@
                     <label for="dependencies">Dependencies:</label>
                     <input type="text" class="form-control" id="dependencies" name="dependencies">
                     <br>
-                    <label for="runlist">Runlist:</label>
-                    <input type="text" class="form-control" id="runlist" name="runlist">
+                    <label for="runlists">Runlist:</label>
+                    <select class="form-control" id="runlists" name="runlists">
+                        {{-- Populated by an AJAX post request --}}
+                    </select>
                     <br>
                     <label for="args">Additional Arguments:</label>
                     <input type="text" class="form-control" id="args" name="args">

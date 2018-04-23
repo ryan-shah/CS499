@@ -8,10 +8,8 @@ $(document).ready(function () {
 
     function handleProgram() {
         // Generic function for committing forms to the database.
-        // This handles adding and editing programs and runlists, all in one function
+        // This handles adding and editing programs, both in one function
         $(".program-modal-submit").click(function () {
-            // var data = $('.add-program-form').serializeArray();
-            debugger;
             var form_id = $(this).attr('id');
             var data = $('form[id=' + form_id + ']').serializeArray();
             var formatted_data = [{name: 'dependencies', value: []}]; // We need to make an object for the dependencies
@@ -33,10 +31,8 @@ $(document).ready(function () {
                 console.log(response);
             }, 'json');
 
-            alert(form_id);
-
             setTimeout(function(){
-              //  location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+                location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
             }, 1000);
         });
     }
@@ -45,14 +41,18 @@ $(document).ready(function () {
         $(".begin-edit").click(function () {
             var program_id = $(this).attr('id');
             console.log("Edit clicked");
+            getAllRunlists('#editProgramModal');   // Populates the modal
+            getAllPrograms('#editProgramModal');
             $.post('get-program/' + program_id, null, function (response) {
                 var program = JSON.parse(response['program']);
+                var runlist = JSON.parse(response['runlist']);
+                console.log(runlist);
                 var edit_modal = $('#editProgramModal');    // Display all of the current data for the program selected
                 edit_modal.find('#name').val(program['pname']);
                 edit_modal.find('#path').val(program['path']);
                 edit_modal.find('#memUsage').val(program['estimated_memory_usage']);
                 edit_modal.find('#dependencies').val("TODO");
-                edit_modal.find('#runlist').val("TODO");
+                edit_modal.find('#runlists').val(runlist['rpid']);
                 edit_modal.find('#args').val(program['command_line']);
                 edit_modal.find('#pid').val(program_id);
                 edit_modal.modal('show');
@@ -60,13 +60,13 @@ $(document).ready(function () {
         });
     }
 
-    function getAllPrograms(){  // Get all program names. Used mainly for dependency selection.
+    function getAllPrograms(modal_id){  // Get all program names. Used mainly for dependency selection.
             $.post('get-program-list', null, function(response){
-                var add_modal = $('#addProgramModal');
+                var modal = $(modal_id);
                 response['programs'].forEach(function (element) {
                     var new_option = '<option value=' + element.pid + '>' + element.pname + '</option>';
                     console.log(new_option);
-                    add_modal.find('#dependencies').append(new_option);
+                    modal.find('#dependencies').append(new_option);
                 });
 
             });
@@ -87,7 +87,6 @@ $(document).ready(function () {
 
     function deleteProgram() {
         $('.delete-program').click(function () {
-            var id = $().attr('id');
             var data = $('form[id="edit-program"]').serializeArray();
             console.log(data);
             $.post('delete-program', data , function(response){
@@ -97,26 +96,55 @@ $(document).ready(function () {
 
     }
 
-    function getAllRunlists(){
+    function deleteRunlist() {
+        $('.delete-runlist').click(function () {
+            var data = $('form[id="edit-runlist"]').serializeArray();
+            console.log(data);
+            $.post('delete-runlist', data , function(response){
+                console.log(response);
+            });
+        });
+
+    }
+
+    function getAllRunlists(modal_id){
         // Gets all the runlists, for adding them to the select box
-        $(".add-program-button").click(function() {
-            $.post('get-runlist-list', null, function(response){
-                var add_modal = $('#addProgramModal');
-                add_modal.find('#runlists').append('<option value=-1></option>');
-                response['runlists'].forEach(function (element) {
-                    console.log(element);
-                    var new_option = '<option value=' + element.rpid + '>' + element.rname + '</option>';
-                    add_modal.find('#runlists').append(new_option);
-                });
+        $.post('get-runlist-list', null, function(response){
+            var modal = $(modal_id);
+            modal.find('#runlists').append('<option value=-1></option>');
+            response['runlists'].forEach(function (element) {
+                console.log(element);
+                var new_option = '<option value=' + element.rpid + '>' + element.rname + '</option>';
+                modal.find('#runlists').append(new_option);
             });
         });
     }
 
+    function getRunlistInfo(){
+        $(".begin-edit-runlist").click(function () {
+            var runlist_id = $(this).attr('id');
+            console.log("Edit Runlist clicked " + runlist_id);
+            var edit_modal = $('#editRunlistModal');    // Display all of the current data for the program selected
+            $.post('get-runlist/' + runlist_id, null, function (response) {
+                console.log(response);
+                var runlist = response['runlist'];
+                console.log(runlist);
+                edit_modal.find('#name').val(runlist['rname']);
+                edit_modal.find('#time').val(runlist['rtime']);
+                edit_modal.find('#rpid').val(runlist_id);
+                edit_modal.modal('show');
+            });
+        });
+    }
+
+    getAllRunlists('#addProgramModal');
+    getAllPrograms('#addProgramModal');
+
+    getRunlistInfo();
+    deleteRunlist();
     handleRunlist();
-    getAllPrograms();
     getProgramInfo();
     handleProgram();
-    getAllRunlists();
     deleteProgram();
 
 });
