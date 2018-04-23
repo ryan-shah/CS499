@@ -11,7 +11,7 @@ class DatabaseController extends Controller
     public function updateDatabase(){
 
         //With the c++ program creating a JSON with updated expected_memory_usage and expected_time,
-        //we need to update the database with that information
+        //we should update the database with that information
 
         //Read and convert output.json into an array
         $filename = storage_path("../../server/output.json");

@@ -14,7 +14,17 @@
                     <br>
                     <label for="time">Time:</label>
                     <input type="time" class="form-control" value="20:00" id="time" name="time">
-
+                    <br>
+                    <label for="days">Days:</label>
+                    <select multiple class="form-control" id="days" name="days">
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                    </select>
                 </form>
             </div>
             <div class="modal-footer">

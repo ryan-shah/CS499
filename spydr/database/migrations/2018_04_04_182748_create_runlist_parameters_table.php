@@ -17,7 +17,7 @@ class CreateRunlistParametersTable extends Migration
             $table->increments('rpid');
             $table->string('rname');
             $table->time('rtime');
-            //Statistics
+            $table->string('days');
             $table->timestamps();
         });
     }

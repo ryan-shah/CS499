@@ -54,21 +54,21 @@ class JsonController extends Controller
 
     }
 
-    public function addProgram($runlist, &$schedules, $rpid, &$program, &$pid): void{
+    public function addProgram($runlist, &$schedules, $rpid, &$program, &$pid_parsed): void{
 
         //Add the Program information from the database
         $program = Program::find($runlist->program_id);
 
         //Grab and parse the string so that only the pid is left
-        $pid = $this->parseHash((string)Program::select('pid')->find($runlist->program_id));
+        $pid_parsed = $this->parseHash((string)Program::select('pid')->find($runlist->program_id));
 
         //Insert the program information into the array
-        $schedules["schedules"][$rpid]["programs"][$pid]["id"] = $program->pid;
-        $schedules["schedules"][$rpid]["programs"][$pid]["name"] = $program->pname;
-        $schedules["schedules"][$rpid]["programs"][$pid]["estMemUsage"] = $program->estimated_memory_usage;
-        $schedules["schedules"][$rpid]["programs"][$pid]["estTime"] = $program->estimated_time;
-        $schedules["schedules"][$rpid]["programs"][$pid]["path"] = $program->path;
-        $schedules["schedules"][$rpid]["programs"][$pid]["cmdLine"] = $program->command_line;
+        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["id"] = $program->pid;
+        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["name"] = $program->pname;
+        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["estMemUsage"] = $program->estimated_memory_usage;
+        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["estTime"] = $program->estimated_time;
+        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["path"] = $program->path;
+        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["cmdLine"] = $program->command_line;
 
     }
 
@@ -102,15 +102,12 @@ class JsonController extends Controller
                 $schedules["schedules"][$rpid_parsed]["min"] = date('i', strtotime($runlist_parameter->rtime));
 
                 //Add hard-coded days [NEEDS TO BE UPDATED ONCE DAYS ARE IMPLEMENTED TO THE WEBSITE]
-                $schedules["schedules"][$rpid_parsed]["days"] = array(
-                    1 => "sunday",
-                    2 => "monday",
-                    3 => "tuesday",
-                    4 => "wednesday",
-                    5 => "thursday",
-                    6 => "friday",
-                    7 => "saturday"
-                );
+                $days = json_decode($runlist_parameter->days);
+                $i = 1;
+                foreach($days as $day){
+                    $schedules["schedules"][$rpid_parsed]["days"]["$i"] = "$day";
+                    $i++;
+                }
 
                 //Add the program information
                 $this->addProgram($runlist, $schedules, $rpid_parsed, $program, $pid);
@@ -133,7 +130,7 @@ class JsonController extends Controller
 
         }
 
-        return $schedules;
+        return json_encode($schedules);
 
     }
 
@@ -148,7 +145,7 @@ class JsonController extends Controller
         }
 
         //Create the content of spydr.json
-        $spydr = json_encode($this->createJson(), JSON_PRETTY_PRINT);
+        $spydr = $this->createJson();
 
         //Replace the previous spydr.json with the updated version
         File::put($filename, $spydr);
