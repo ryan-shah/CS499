@@ -1,15 +1,30 @@
+/*
+
+The "main" function rests here
+It will
+ *read input json
+ *check if time to run (in loop forever)
+ *run schedule if it's appropriate
+ *write output json when finished
+ *use wget to tell website to read file
+
+*/
+
 #include "program.h"
 #include "schedule.h"
 #include "unistd.h"
 #include "json.h"
-#include "config.h"
 #include <thread>
+#include "config.h"
 
 using namespace std;
 
+//config variable
+Config spydr_conf;
+
 //used to tell website to read output json
 void ping_website() {
-	string cmd = string("wget ") + WEBSITE_READ_OUTPUT;
+	string cmd = string("wget ") + spydr_conf.WEBSITE_READ_OUTPUT;
 	system(cmd.c_str());
 }
 
@@ -24,7 +39,7 @@ void run_schedule(Schedule* s, string file) {
 	}
 	if(s->timeToRun()) {
 		cout << "finished in < 10 mins, waiting for another 10 to avoid running twice" << endl;
-		sleep(2 * RUN_WAIT_TIME);
+		sleep(2 * spydr_conf.RUN_WAIT_TIME);
 	}
 }
 
@@ -34,8 +49,8 @@ int main(int argc, char *argv[]) {
 		cout << "usage: " << argv[0] << " -in </path/to/input.json> -out </path/to/output.json>" << endl;
 		return 1;
 	}
-	string infile = INPUT_FILE_DEFAULT;
-	string outfile = OUTPUT_FILE_DEFAULT;
+	string infile = spydr_conf.INPUT_FILE_DEFAULT;
+	string outfile = spydr_conf.OUTPUT_FILE_DEFAULT;
 
 	for(int i = 0; i < argc - 1; i++) {
 		if(string(argv[i]) == "-in") {
@@ -66,7 +81,7 @@ int main(int argc, char *argv[]) {
 				t.join();
 			}
 		} else {
-			sleep(RUN_WAIT_TIME);
+			sleep(spydr_conf.RUN_WAIT_TIME);
 		}
 	}
 

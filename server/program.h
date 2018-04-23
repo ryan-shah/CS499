@@ -1,3 +1,12 @@
+/*
+
+This is the class structure for Program
+Only two fucntions are called relating to a program, canRun and checkMem
+
+This class is referenced by Schedule.h
+
+*/
+
 #ifndef PROGRAM_H
 #define PROGRAM_H
 
@@ -10,15 +19,27 @@ class Program {
 
 public:
 	//variables
+	//program id
 	int id;
+	//program name
 	string name;
+	//list of dependencies
 	vector<Program*> dependencies;
+	//estimated memory and time. Updated when schedule is run
 	double estMemUsage;
 	double estTime;
+	//path to file
 	string path;
+	//bool telling if program has completed
 	bool completed = false;
+	//the command line needed to execute the script
 	string cmdLine;
+	//the return value of the program. Not used, but if error checking of programs needs to be checked in the
+	//future this will be relavent. This value is set when program is finished running but its value is not checked for success
 	int returnVal;
+	//TODO: this will eventually be used to track cluster processes. If this is set to true, then instead of
+	//track_process, track_cluster must be called
+	bool isCluster = false;
 
 	//functions
 	//returns true if all dependencies have been completed

@@ -36,7 +36,7 @@
             "id": 4,
             "name": "mytestscript.php",
             "estMemUsage": 137609216,
-            "estTime": 172,
+            "estTime": 5,
             "path": "scripts/mytestscript.php",
             "cmdLine": "php scripts/mytestscript.php"
         }

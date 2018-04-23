@@ -63,12 +63,12 @@
       }
     },
     "1": {
-      "hour":21,
-      "min":10,
+      "hour":17,
+      "min":35,
       "days": {
          "0":"sunday",
          "1":"saturday",
-         "2":"friday"
+         "2":"monday"
       },
       "programs": {
         "0": {
