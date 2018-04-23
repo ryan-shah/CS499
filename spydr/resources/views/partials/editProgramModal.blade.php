@@ -20,8 +20,10 @@
                     <label for="dependencies">Dependencies:</label>
                     <input type="text" class="form-control" id="dependencies" name="dependencies">
                     <br>
-                    <label for="runlist">Runlist:</label>
-                    <input type="text" class="form-control" id="runlist" name="runlist">
+                    <label for="runlists">Runlist:</label>
+                    <select class="form-control" id="runlists" name="runlists">
+                        {{-- Populated by an AJAX post request --}}
+                    </select>
                     <br>
                     <label for="args">Additional Arguments:</label>
                     <input type="text" class="form-control" id="args" name="args">
@@ -30,6 +32,8 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-danger delete-program" id="delete-program" data-dismiss="modal">Delete Program</button>
+                <div class="button-spacer"></div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary program-modal-submit" id="edit-program" data-dismiss="modal">Save changes</button>
             </div>

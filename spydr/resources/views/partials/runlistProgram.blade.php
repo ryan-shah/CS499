@@ -14,7 +14,7 @@
     <ul class="list-group">
         <li class="list-group-item"> {{-- Memory: {{format_memory($runlist_parameter->estimated_memory_usage)}} --}} Placeholder Statistics</li>
          {{-- i'll take out the inline style later... -Alijah --}}
-        <li class="list-group-item" style="text-align: center;"><a href="#" onclick="editRunlist({{$runlist_parameter->rpid}})">Edit</a></li>
+        <li class="list-group-item begin-edit-runlist" id="{{$runlist_parameter->rpid}}" style="text-align: center;"><a href="#">Edit</a></li>
     </ul>
 </div>
 <br>

@@ -49,4 +49,24 @@ class RunlistController extends Controller
 
         return response()->json($response);
     }
+
+    public function getRunlist(Request $request, $id){
+        $runlist = RunlistParameter::find($id);
+        $response = array(
+            'status' => 'success',
+            'runlist' => $runlist
+        );
+
+        return response()->json($response);
+    }
+
+    public function deleteRunlist(Request $request) {
+        // Delete a program with the requested id
+        RunlistParameter::destroy($request->input('rpid'));
+
+        $response = array(
+            'status' => $request->input('rpid'),
+        );
+        return response()->json($response);
+    }
 }

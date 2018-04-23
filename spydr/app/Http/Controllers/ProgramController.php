@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Dependency;
 use App\Program;
+use App\Runlist;
+use App\RunlistParameter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
 {
@@ -46,12 +47,19 @@ class ProgramController extends Controller
             $dependency->save();
         }
 
+        $rid = $request->input('runlists', -1);
+        if($rid != -1){
+            $runlist = new Runlist;
+            $runlist->program_id = $pid;
+            $runlist->runlist_id = $rid;
+
+            $runlist->save();
+        }
 
         $response = array(
             'status' => 'success',
             'msg' => $request->all(),
-            'deps' => $dependencies,
-            'pid' => $pid,
+            'rid' => $rid,
         );
 
         return response()->json($response);
@@ -62,10 +70,13 @@ class ProgramController extends Controller
         // programs table to populate the modal
 
         $program = Program::find($id);
+        $runlist = Runlist::select('runlist_id')->where('program_id', $id)->get();
+        $runlist_id = RunlistParameter::find($runlist);
 
         $response = array(
             'status' => 'success',
             'program' => json_encode($program), // Pass back the program as a json, to be easily parsed by jQuery
+            'runlist' => json_encode($runlist_id),
         );
 
         return response()->json($response);
@@ -76,7 +87,6 @@ class ProgramController extends Controller
         $program = Program::find($request->input('pid'));
         $program->pname = $request->input('name');
         $program->estimated_memory_usage = $request->input('memUsage');
-        $program->estimated_time = 0;
         $program->path = $request->input('path');
         $program->command_line = $request->input('args');
 
@@ -96,6 +106,17 @@ class ProgramController extends Controller
             'programs' => $programs
         );
 
+        return response()->json($response);
+    }
+
+    public function deleteProgram(Request $request) {
+        // Delete a program with the requested id
+        $program = Program::find($request->input('pid'));
+        $msg = $program->forceDelete();
+
+        $response = array(
+            'status' => $msg,
+        );
         return response()->json($response);
     }
 }
