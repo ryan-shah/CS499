@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e11578e5-8c27-42cb-874c-e874a8fbebff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/spydr.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/spydr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/app/Http/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/app/Http/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/resources/views/partials/runlistProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/resources/views/partials/runlistProgram.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/json.h" beforeDir="false" afterPath="$PROJECT_DIR$/server/json.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/spydr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/testJson.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +32,8 @@
       <file leaf-file-name="helpers.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spydr/app/Http/helpers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+            <state relative-caret-position="258">
+              <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -227,6 +228,11 @@
             <path>
               <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS499" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="CS499" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS499" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="spydr" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -295,16 +301,15 @@
       <workItem from="1524545439375" duration="248000" />
       <workItem from="1524598627620" duration="628000" />
       <workItem from="1524607432431" duration="1653000" />
-      <workItem from="1524609465629" duration="3203000" />
+      <workItem from="1524609465629" duration="3483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124543000" />
+    <option name="totallyTimeSpent" value="124823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1280" height="774" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50078124" side_tool="true" weight="0.32935917" />
@@ -612,8 +617,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spydr/app/Http/helpers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+        <state relative-caret-position="258">
+          <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
         </state>
       </provider>
     </entry>
