@@ -8,10 +8,10 @@
 
 {{-- This controls how wide the sidebar and other content are --}}
 @section('content')
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         @include('partials.sidebar')
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-6">
         <div class="flex-container">
             @include('partials.statistics')
 
