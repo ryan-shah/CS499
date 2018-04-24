@@ -38,6 +38,7 @@ Route::post('/get-runlist-list', 'RunlistController@getAllRunlists');
 Route::get('/output', 'DatabaseController@updateDatabase');
 
 Route::get('/login', function () {
+    // Unimplemented
     return view('login');
 });
 

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    // This contains all of the JS that gets run on the webpage.
+
     $.ajaxSetup({   // Laravel requires this in order to make post requests
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
