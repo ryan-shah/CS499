@@ -16,7 +16,6 @@
         <li class="list-group-item">CPU Time: {{format_time($program->estimated_time)}}</li>
         <li class="list-group-item">Path: {{$program->path}}</li>
         <li class="list-group-item">Arguments: {{$program->command_line}}</li>
-        {{-- i'll take out the inline style later... -Alijah --}}
         <li class="list-group-item begin-edit" id="{{$program->pid}}" style="text-align: center;"><a href="#">Edit</a></li>
     </ul>
 </div>

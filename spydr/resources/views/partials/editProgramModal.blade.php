@@ -1,4 +1,4 @@
-{{-- This is the form used for the popup that appears when 'Edit Program' is clicked --}}
+{{-- This is the form used for the popup that appears when 'Edit Program' is clicked [NOT FULLY IMPLEMENTED] --}}
 
 <div class="modal fade" id="editProgramModal" role="dialog" aria-labelledby="editProgramModalLabel">
     <div class="modal-dialog" role="document">

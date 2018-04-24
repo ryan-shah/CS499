@@ -10,20 +10,19 @@
                 <form class="form-group-row" id="add-runlist">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name">
-                    {{-- For now, the runlist will run every day. -Alijah --}}
                     <br>
                     <label for="time">Time:</label>
                     <input type="time" class="form-control" value="20:00" id="time" name="time">
                     <br>
                     <label for="days">Days:</label>
                     <select multiple class="form-control" id="days" name="days">
+                        <option>Sunday</option>
                         <option>Monday</option>
                         <option>Tuesday</option>
                         <option>Wednesday</option>
                         <option>Thursday</option>
                         <option>Friday</option>
                         <option>Saturday</option>
-                        <option>Sunday</option>
                     </select>
                 </form>
             </div>
