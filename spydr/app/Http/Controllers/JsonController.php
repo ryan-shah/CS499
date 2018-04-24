@@ -44,14 +44,6 @@ class JsonController extends Controller
 
         }
 
-        //If there is not an existing dependency
-        else {
-
-            //Add an empty dependency into the JSON
-            $schedules["schedules"][$rpid_parsed]["dependencies"] = [];
-
-        }
-
     }
 
     public function addProgram($runlist, &$schedules, $rpid, &$program, &$pid_parsed): void{
@@ -125,6 +117,14 @@ class JsonController extends Controller
 
                 //Add the dependency information
                 $this->addDependency($runlist, $schedules, $rpid_parsed, $program);
+
+            }
+
+            //If there is not an existing dependency
+            if(!array_key_exists("dependencies", $schedules["schedules"][$rpid_parsed])) {
+
+                //Add an empty dependency into the JSON
+                $schedules["schedules"][$rpid_parsed]["dependencies"] = json_decode("{}");
 
             }
 

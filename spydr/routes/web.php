@@ -34,9 +34,7 @@ Route::post('/delete-runlist', 'RunlistController@deleteRunlist');
 Route::post('/get-runlist/{id}', 'RunlistController@getRunlist');
 Route::post('/get-runlist-list', 'RunlistController@getAllRunlists');
 
-Route::get('/test', 'JsonController@updateJson'); //TO BE REMOVED FOR PROJECT COMPLETION
 Route::get('/output', 'DatabaseController@updateDatabase');
-Route::get('/runlist', 'JsonController@updateJson'); //TO BE REMOVED FOR PROJECT COMPLETION
 
 Route::get('/login', function () {
     return view('login');
