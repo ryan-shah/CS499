@@ -51,3 +51,17 @@ function format_memory($bytes) {
     return (string)$bytes . "B";
 
 }
+
+/**
+ * @param $string    Days run as an unformatted string
+ * @return $string   Days run as a formatted string
+ */
+function format_days($string) {
+
+    $string = str_replace('[', '', $string);
+    $string = str_replace(']', '', $string);
+    $string = str_replace('"', '', $string);
+    $string = str_replace(',', ', ', $string);
+    return $string;
+
+}
