@@ -1,4 +1,4 @@
-{{-- This is the form used for the popup that appears when 'Edit Runlist' is clicked --}}
+{{-- This is the form used for the popup that appears when 'Edit Runlist' is clicked [NOT FULLY IMPLEMENTED] --}}
 
 <div class="modal fade" id="editRunlistModal" role="dialog" aria-labelledby="editRunlistModalLabel">
     <div class="modal-dialog" role="document">

@@ -8,8 +8,9 @@ $(document).ready(function () {
         }
     });
 
+    // Generic function for committing forms to the database.
     function handleProgram() {
-        // Generic function for committing forms to the database.
+
         // This handles adding and editing programs, both in one function
         $(".program-modal-submit").click(function () {
             var form_id = $(this).attr('id');
@@ -40,6 +41,7 @@ $(document).ready(function () {
     }
 
     function getProgramInfo() {
+
         $(".begin-edit").click(function () {
             var program_id = $(this).attr('id');
             console.log("Edit clicked");
@@ -60,24 +62,27 @@ $(document).ready(function () {
                 edit_modal.modal('show');
             });
         });
+
     }
 
-    function getAllPrograms(modal_id){  // Get all program names. Used mainly for dependency selection.
-            $.post('get-program-list', null, function(response){
-                var modal = $(modal_id);
-                response['programs'].forEach(function (element) {
-                    var new_option = '<option value=' + element.pid + '>' + element.pname + '</option>';
-                    console.log(new_option);
-                    modal.find('#dependencies').append(new_option);
-                });
+    // Get all program names. Used mainly for dependency selection.
+    function getAllPrograms(modal_id){
 
+        $.post('get-program-list', null, function(response){
+            var modal = $(modal_id);
+            response['programs'].forEach(function (element) {
+                var new_option = '<option value=' + element.pid + '>' + element.pname + '</option>';
+                console.log(new_option);
+                modal.find('#dependencies').append(new_option);
             });
+        });
+
     }
 
-
+    // Handles modals for adding or editing runlists
+    // Generic function for committing forms to the database.
     function handleRunlist(){
-        // Handles modals for adding or editing runlists
-        // Generic function for committing forms to the database.
+
         // This handles adding and editing programs and runlists, all in one function
         $(".runlist-modal-submit").click(function () {
             // var data = $('.add-program-form').serializeArray();
@@ -102,7 +107,9 @@ $(document).ready(function () {
                 console.log(response);
             }, 'json');
 
-            location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            setTimeout(function(){
+                location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            }, 1000);
         });
     }
 
@@ -128,8 +135,9 @@ $(document).ready(function () {
 
     }
 
+    // Gets all the runlists, for adding them to the select box
     function getAllRunlists(modal_id){
-        // Gets all the runlists, for adding them to the select box
+
         $.post('get-runlist-list', null, function(response){
             var modal = $(modal_id);
             modal.find('#runlists').append('<option value=-1></option>');
@@ -139,9 +147,11 @@ $(document).ready(function () {
                 modal.find('#runlists').append(new_option);
             });
         });
+
     }
 
     function getRunlistInfo(){
+
         $(".begin-edit-runlist").click(function () {
             var runlist_id = $(this).attr('id');
             console.log("Edit Runlist clicked " + runlist_id);
@@ -156,6 +166,7 @@ $(document).ready(function () {
                 edit_modal.modal('show');
             });
         });
+
     }
 
     getAllRunlists('#addProgramModal');
