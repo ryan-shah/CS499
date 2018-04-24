@@ -62,7 +62,7 @@ void writeJson(Schedule Sched, string outfile) {
 
         ofstream of (outfile);
         of << json;
-        if (!of.good()) throw runtime_error ("Can't write the JSON string to the file!");
+        if (!of.good()) throw ("Can't write the JSON string to the file!");
 
 }
 
