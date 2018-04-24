@@ -39,8 +39,8 @@ class JsonController extends Controller
                 $dependency = Dependency::select('did')->find($program->pid);
 
                 //Add the dependency information
-                $schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed]["parent"] = $dependency->program_id;
-                $schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed]["child"] = $dependency->dependency_id;
+                $schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed]["parent"] = (int)$dependency->program_id;
+                $schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed]["child"] = (int)$dependency->dependency_id;
 
             }
 
@@ -58,10 +58,10 @@ class JsonController extends Controller
         $pid_parsed = $this->parseHash((string)Program::select('pid')->find($runlist->program_id));
 
         //Insert the program information into the array
-        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["id"] = $program->pid;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["id"] = (int)$program->pid;
         $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["name"] = $program->pname;
-        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["estMemUsage"] = $program->estimated_memory_usage;
-        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["estTime"] = $program->estimated_time;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["estMemUsage"] = (int)$program->estimated_memory_usage;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["estTime"] = (int)$program->estimated_time;
         $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["path"] = $program->path;
         $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["cmdLine"] = $program->command_line;
 
@@ -94,8 +94,8 @@ class JsonController extends Controller
                 $runlist_parameter = RunlistParameter::find($runlist->runlist_id);
 
                 //Parse the rtime information into hour and min for the array
-                $schedules["schedules"][$rpid_parsed]["hour"] = date('H', strtotime($runlist_parameter->rtime));
-                $schedules["schedules"][$rpid_parsed]["min"] = date('i', strtotime($runlist_parameter->rtime));
+                $schedules["schedules"][$rpid_parsed]["hour"] = (int)date('H', strtotime($runlist_parameter->rtime));
+                $schedules["schedules"][$rpid_parsed]["min"] = (int)date('i', strtotime($runlist_parameter->rtime));
 
                 //Add hard-coded days [NEEDS TO BE UPDATED ONCE DAYS ARE IMPLEMENTED TO THE WEBSITE]
                 $days = json_decode($runlist_parameter->days);
