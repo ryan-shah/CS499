@@ -34,6 +34,7 @@ Route::post('/delete-runlist', 'RunlistController@deleteRunlist');
 Route::post('/get-runlist/{id}', 'RunlistController@getRunlist');
 Route::post('/get-runlist-list', 'RunlistController@getAllRunlists');
 
+//This one is called by the code in /server/ to update the database and spydr.json with updated mem_usage and time values
 Route::get('/output', 'DatabaseController@updateDatabase');
 
 Route::get('/login', function () {

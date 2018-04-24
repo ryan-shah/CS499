@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\File;
 class JsonController extends Controller
 {
 
+    //When retrieving a hash entry, we need to parse out the value from the hash
     public function parseHash($input){
 
-        //Parse out the definition from the hash element
+        //Parse out the definition from the hash values
         return strtok(explode(':', $input)[1], '}');
 
     }
 
+    //Retrieve a reference schedules and various database entries and add a dependency to the schedules array
     public function addDependency($runlist, &$schedules, $rpid_parsed, $program): void
     {
 
@@ -33,7 +35,7 @@ class JsonController extends Controller
             //If the Dependency does not already exist in the array
             if (!isset($schedules["schedules"][$rpid_parsed]["dependencies"][$did_parsed])) {
 
-                //Grab the row of the Dependancy table associated with the program in question
+                //Grab the row of the Dependency table associated with the program in question
                 $dependency = Dependency::select('did')->find($program->pid);
 
                 //Add the dependency information
@@ -46,7 +48,8 @@ class JsonController extends Controller
 
     }
 
-    public function addProgram($runlist, &$schedules, $rpid, &$program, &$pid_parsed): void{
+    //Retrieve a reference schedules and various database entries and add a program to the schedules array
+    public function addProgram($runlist, &$schedules, $rpid_parsed, &$program, &$pid_parsed): void{
 
         //Add the Program information from the database
         $program = Program::find($runlist->program_id);
@@ -55,15 +58,16 @@ class JsonController extends Controller
         $pid_parsed = $this->parseHash((string)Program::select('pid')->find($runlist->program_id));
 
         //Insert the program information into the array
-        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["id"] = $program->pid;
-        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["name"] = $program->pname;
-        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["estMemUsage"] = $program->estimated_memory_usage;
-        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["estTime"] = $program->estimated_time;
-        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["path"] = $program->path;
-        $schedules["schedules"][$rpid]["programs"][$pid_parsed]["cmdLine"] = $program->command_line;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["id"] = $program->pid;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["name"] = $program->pname;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["estMemUsage"] = $program->estimated_memory_usage;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["estTime"] = $program->estimated_time;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["path"] = $program->path;
+        $schedules["schedules"][$rpid_parsed]["programs"][$pid_parsed]["cmdLine"] = $program->command_line;
 
     }
 
+    //Creates the text that will be supplied to spydr.json
     public function createJson(){
 
         //Initialize the arrays we will use to create the resulting JSON
@@ -130,12 +134,14 @@ class JsonController extends Controller
 
         }
 
+        //Return the encoded version of the array
         return json_encode($schedules);
 
     }
 
+    //Replace the older version of spydr.json with a new one
+    //Called after any update to the database is made
     public function updateJson(){
-        //With the database updated, the JSON needs to be updated as well
 
         //Delete spydr.json if it exists, as well as make sure it is deleted afterwards,
         //since File::delete() does not check for deletion

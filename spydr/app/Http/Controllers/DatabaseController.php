@@ -8,10 +8,9 @@ use Illuminate\Support\Facades\File;
 class DatabaseController extends Controller
 {
 
+    //With the c++ program creating a JSON with updated expected_memory_usage and expected_time,
+    //we should update the database with that information
     public function updateDatabase(){
-
-        //With the c++ program creating a JSON with updated expected_memory_usage and expected_time,
-        //we should update the database with that information
 
         //Read and convert output.json into an array
         $filename = storage_path("../../server/output.json");

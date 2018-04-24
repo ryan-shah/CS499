@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class RunlistController extends Controller
 {
-    // Handles any making/editing of runlists
 
+    // Handles any making/editing of runlists
     public function readRunlists(){
 
         $runlists = RunlistParameter::all();
@@ -16,6 +16,7 @@ class RunlistController extends Controller
 
     }
 
+    // Takes in a request that looks very similar to the "addProgram" one, but this one adds a new runlist
     public function addRunlist(Request $request){
 
         // Takes in a request that looks very similar to the "addProgram" one, but this one adds a new runlist
