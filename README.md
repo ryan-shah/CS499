@@ -3,7 +3,7 @@ CS 499 Project
 
 Installation Guide
 
-Assuming you have composer already installed, there are a few things you'll have to do to be able to run this with php artisan.
+Assuming you have composer already installed, there are a few things you'll have to do to be able to run the website with php artisan.
 
 1. ```composer install```
 2. ```php artisan key:generate```
@@ -13,7 +13,7 @@ If the server starts and the webpage appears correctly at the address (probably 
 
 Files Edited
 
-1. ``` spydr -> app -> Http -> Controllers -> Auth -> ProgramController.php ```
+1. ``` spydr -> app -> Http -> Controllers -> Auth (all files) ```
 2. ``` spydr -> database -> migrations (all files) ```
 3. ``` spydr -> public -> css -> style.css ```
 4. ``` spydr -> public -> js -> spydr.js ```
