@@ -26,7 +26,7 @@ public:
 	//list of dependencies
 	vector<Program*> dependencies;
 	//estimated memory and time. Updated when schedule is run
-	double estMemUsage;
+	long int estMemUsage;
 	double estTime;
 	//path to file
 	string path;

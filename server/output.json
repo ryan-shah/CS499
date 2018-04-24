@@ -1,44 +1,20 @@
 {
     "programs": [
         {
-            "id": 0,
-            "name": "testScript1.sh",
-            "estMemUsage": 11497472,
-            "estTime": 5,
-            "path": "scripts/testScript1.sh",
-            "cmdLine": "./scripts/testScript1.sh"
-        },
-        {
             "id": 1,
-            "name": "testScript2.sh",
-            "estMemUsage": 11497472,
-            "estTime": 10,
-            "path": "scripts/testScript2.sh",
-            "cmdLine": "./scripts/testScript2.sh"
+            "name": "testScript1-1.sh",
+            "estMemUsage": 357552128,
+            "estTime": 4,
+            "path": "scripts/testScript1-1.sh",
+            "cmdLine": "./scripts/testScript1-1.sh"
         },
         {
             "id": 2,
-            "name": "testScript3.sh",
-            "estMemUsage": 11497472,
-            "estTime": 15,
-            "path": "scripts/testScript3.sh",
-            "cmdLine": "./scripts/testScript3.sh"
-        },
-        {
-            "id": 3,
-            "name": "testScript4.sh",
-            "estMemUsage": 11497472,
-            "estTime": 20,
-            "path": "scripts/testScript4.sh",
-            "cmdLine": "./scripts/testScript4.sh"
-        },
-        {
-            "id": 4,
-            "name": "mytestscript.php",
-            "estMemUsage": 137609216,
-            "estTime": 5,
-            "path": "scripts/mytestscript.php",
-            "cmdLine": "php scripts/mytestscript.php"
+            "name": "testScript2-1.sh",
+            "estMemUsage": 2537189376,
+            "estTime": 9,
+            "path": "scripts/testScript2-1.sh",
+            "cmdLine": "./scripts/testScript2-1.sh"
         }
     ]
 }

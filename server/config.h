@@ -17,7 +17,8 @@ class Config {
 
 
 	//URL to call when the website needs to read output file
-	string WEBSITE_READ_OUTPUT = "https://localhost:8000/output";
+	string WEBSITE_READ_OUTPUT = "http://localhost:8000/output";
 
+	int TRACKING_WAIT_TIME = 2;
 };
 #endif

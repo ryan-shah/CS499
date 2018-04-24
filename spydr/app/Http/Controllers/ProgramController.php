@@ -62,6 +62,9 @@ class ProgramController extends Controller
             'rid' => $rid,
         );
 
+        //Update spydr.json with the new information
+        app('App\Http\Controllers\JsonController')->updateJson();
+
         return response()->json($response);
     }
 

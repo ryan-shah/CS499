@@ -24,7 +24,7 @@ Config spydr_conf;
 
 //used to tell website to read output json
 void ping_website() {
-	string cmd = string("wget ") + spydr_conf.WEBSITE_READ_OUTPUT;
+	string cmd = string("wget -O/dev/null -q ") + spydr_conf.WEBSITE_READ_OUTPUT;
 	system(cmd.c_str());
 }
 

@@ -100,7 +100,7 @@ void track_cluster(Program *P) {
 // sets the Program.completed value to true
 void track_process(Program *P) {
 	//wait 1 sec to avoid concurrence errors
-	sleep(1);
+	sleep(schedule_conf.TRACKING_WAIT_TIME);
 	//find the pid
 	int pid = getPID(P->name);
 	cout << "Tracking process " << P->name << " with PID: " << pid << endl;
@@ -120,6 +120,7 @@ void track_process(Program *P) {
 		//memory is the 22nd entry
 		string mem = parts[22];
 		long int memVal = stol(mem);
+		//long int memVal = 10;
 		if(memVal > maxMem) {
 			maxMem = memVal;
 		}
