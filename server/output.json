@@ -2,19 +2,19 @@
     "programs": [
         {
             "id": 1,
-            "name": "testScript1-1.sh",
-            "estMemUsage": 357552128,
-            "estTime": 4,
-            "path": "scripts/testScript1-1.sh",
-            "cmdLine": "./scripts/testScript1-1.sh"
+            "name": "testScript1.sh",
+            "estMemUsage": 0,
+            "estTime": 1,
+            "path": "scripts/testScript1.sh",
+            "cmdLine": "./scripts/testScript1.sh"
         },
         {
             "id": 2,
-            "name": "testScript2-1.sh",
-            "estMemUsage": 2537189376,
-            "estTime": 9,
-            "path": "scripts/testScript2-1.sh",
-            "cmdLine": "./scripts/testScript2-1.sh"
+            "name": "testScript2.sh",
+            "estMemUsage": 0,
+            "estTime": 1,
+            "path": "scripts/testScript2.sh",
+            "cmdLine": "./scripts/testScript2.sh"
         }
     ]
 }
