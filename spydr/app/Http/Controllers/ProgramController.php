@@ -99,6 +99,9 @@ class ProgramController extends Controller
             'status' => 'success',
         );
 
+        //Update spydr.json with the new information
+        app('App\Http\Controllers\JsonController')->updateJson();
+
         return response()->json($response);
     }
 
@@ -120,6 +123,10 @@ class ProgramController extends Controller
         $response = array(
             'status' => $msg,
         );
+
+        //Update spydr.json with the new information
+        app('App\Http\Controllers\JsonController')->updateJson();
+
         return response()->json($response);
     }
 }

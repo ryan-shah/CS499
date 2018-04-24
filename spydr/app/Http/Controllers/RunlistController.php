@@ -68,6 +68,10 @@ class RunlistController extends Controller
         $response = array(
             'status' => $request->input('rpid'),
         );
+
+        //Update spydr.json with the new information
+        app('App\Http\Controllers\JsonController')->updateJson();
+
         return response()->json($response);
     }
 }

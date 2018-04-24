@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e11578e5-8c27-42cb-874c-e874a8fbebff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/spydr.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/spydr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/app/Http/Controllers/DatabaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/app/Http/Controllers/DatabaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/app/Http/Controllers/JsonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/app/Http/Controllers/RunlistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/app/Http/Controllers/RunlistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spydr/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/spydr/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="e11578e5-8c27-42cb-874c-e874a8fbebff" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -333,12 +326,12 @@
       <workItem from="1524169646586" duration="11333000" />
       <workItem from="1524272504453" duration="3010000" />
       <workItem from="1524318177096" duration="11237000" />
-      <workItem from="1524534062359" duration="3319000" />
+      <workItem from="1524534062359" duration="3463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118667000" />
+    <option name="totallyTimeSpent" value="118811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1280" height="774" extended-state="6" />
