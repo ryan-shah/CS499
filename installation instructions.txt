@@ -1,0 +1,33 @@
+=====================================
+===== Installation instructions =====
+=====================================
+
+1. Requirements
+	- php 7.1 php7.1-mysql php7.1-mcrypt php7.1-gd php7.1-mbstring php7.1-xml
+		(In order to install these, I had to add 
+		"deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi"
+		to my /etc/apt/sources.list file).
+	- mysql-server (Whatever server software you typically use ought to work as well, if php normally interacts with it
+	- libapache2-mod-php7.1
+	- apache2
+
+2. Steps
+	- Clone repository (https://github.com/ryan-shah/CS499.git) to /var/www/html
+	- Change the ownership of the CS499 directory to "www-data" (or whatever the 'user' is that owns the /var/www directory is)
+	- Change directory to CS499/spydr
+	- run "sudo composer install"
+	- Under /etc/apache2/sites-enabled/000-default.conf, add this:
+
+
+     	<Directory />
+        	Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+      	<Directory /var/www/CS499/spydr>
+                AllowOverride All
+	</Directory>
+	
+
+	- Add a symlink called 'spydr' in /var/www/html to /var/www/html/CS499/spydr/public
+	- In the spydr/.env, change the "DB_*" lines to match your database configuration
+	- Done. The website can be accessed at www.<root-domain>.com/spydr
