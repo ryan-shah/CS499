@@ -10,14 +10,8 @@ use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-    //
-    public function testfunction(Request $request){
-        if ($request->isMethod('post')){
-            return response()->json(['response' => 'This is post method']);
-        }
-
-        return response()->json(['response' => 'This is get method']);
-    }
+    // This class handles any operations that involve the creation, deletion, or updating of programs. Most of these
+    // are invoked by post requests from the spydr.js file.
 
     public function addNewProgram(Request $request){
         // At this point, jQuery has given us all of the information we need to make a new
@@ -106,6 +100,7 @@ class ProgramController extends Controller
     }
 
     public function getAllPrograms(Request $request){
+        // Retrieve every program from the database
         $programs = Program::select('pid', 'pname')->get();
         $response = array(
             'status' => 'success',

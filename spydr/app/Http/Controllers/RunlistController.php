@@ -9,8 +9,8 @@ class RunlistController extends Controller
 {
 
     // Handles any making/editing of runlists
-    public function readRunlists(){
 
+    public function readRunlists(){
         $runlists = RunlistParameter::all();
         return $runlists;
 
@@ -52,6 +52,7 @@ class RunlistController extends Controller
     }
 
     public function getRunlist(Request $request, $id){
+        // Get a runlist from the database by its id
         $runlist = RunlistParameter::find($id);
         $response = array(
             'status' => 'success',
@@ -62,7 +63,7 @@ class RunlistController extends Controller
     }
 
     public function deleteRunlist(Request $request) {
-        // Delete a program with the requested id
+        // Delete a runlist with the requested id
         RunlistParameter::destroy($request->input('rpid'));
 
         $response = array(
