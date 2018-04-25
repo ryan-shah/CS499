@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-danger delete-program" id="delete-program" data-dismiss="modal">Delete Program</button>
                 <div class="button-spacer"></div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary program-modal-submit" id="edit-program" data-dismiss="modal">Save changes</button>
+                {{--<button type="button" class="btn btn-primary program-modal-submit" id="edit-program" data-dismiss="modal">Save changes</button> - NOT IMPLEMENTED--}}
             </div>
         </div>
     </div>

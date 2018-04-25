@@ -21,7 +21,7 @@
                 <button type="button" class="btn btn-danger delete-runlist" id="delete-runlist" data-dismiss="modal">Delete Runlist</button>
                 <div class="button-spacer"></div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary runlist-modal-submit" id="add-runlist" data-dismiss="modal">Save changes</button>
+                {{--<button type="button" class="btn btn-primary runlist-modal-submit" id="add-runlist" data-dismiss="modal">Save changes</button> - NOT IMPLEMENTED--}}
             </div>
         </div>
     </div>
