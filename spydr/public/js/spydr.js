@@ -67,7 +67,6 @@ $(document).ready(function () {
 
     // Get all program names. Used mainly for dependency selection.
     function getAllPrograms(modal_id){
-
         $.post('get-program-list', null, function(response){
             var modal = $(modal_id);
             response['programs'].forEach(function (element) {
@@ -120,6 +119,11 @@ $(document).ready(function () {
             $.post('delete-program', data , function(response){
                console.log(response);
           });
+
+            setTimeout(function(){
+                location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            }, 1000);
+
         });
 
     }
@@ -131,6 +135,11 @@ $(document).ready(function () {
             $.post('delete-runlist', data , function(response){
                 console.log(response);
             });
+
+            setTimeout(function(){
+                location.reload();  // Easiest way to get the changes to show: refresh the page. Might change this later.
+            }, 1000);
+
         });
 
     }
