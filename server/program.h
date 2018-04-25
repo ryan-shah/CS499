@@ -1,3 +1,4 @@
+
 /*
 
 This is the class structure for Program
@@ -65,7 +66,7 @@ public:
 		//scan next 2 lines and get available memory from line 3
 		fscanf(mem_file, "%*s %*u %*s %*s %lu %*s", &availMem);
 		//if available memory and check to see if it is more than available memory
-		if(availMem > estMemUsage) {
+		if( (availMem * 1000) > estMemUsage) {
 			return true;
 		} else {
 			return false;
