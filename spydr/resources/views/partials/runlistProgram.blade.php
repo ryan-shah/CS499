@@ -14,7 +14,7 @@
     <ul class="list-group">
         <li class="list-group-item">Time: {{$runlist_parameter->rtime}}</li>
         <li class="list-group-item">Days: {{format_days($runlist_parameter->days)}}</li>
-        <li class="list-group-item begin-edit" id="{{$runlist_parameter->rpid}}" style="text-align: center;"><a href="#">Edit</a></li>
+        <li class="list-group-item begin-edit-runlist" id="{{$runlist_parameter->rpid}}" style="text-align: center;"><a href="#">Edit</a></li>
     </ul>
 </div>
 <br>
