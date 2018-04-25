@@ -31,3 +31,4 @@
 	- In the spydr/.env, change the "DB_*" lines to match your database configuration
 	- Run "php artisan migrate" to create the necessary database tables
 	- Done. The website can be accessed at www.<root-domain>.com/CS499/spydr/public
+		- The public/.htaccess file should already be configured.
