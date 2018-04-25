@@ -6,18 +6,18 @@
 
 @include('partials.topbar')
 
-{{-- This controls how wide the sidebar and other content are --}}
+{{-- This controls how wide the sidebar and other content are [TO HAVE CODE UNCOMMENTED ONCE STATISTICS ARE IMPLEMENTED] --}}
 @section('content')
     <div class="col-sm-6">
         @include('partials.sidebar')
     </div>
     <div class="col-sm-6">
-        <div class="flex-container">
-            @include('partials.statistics')
+        {{--<div class="flex-container">--}}
+            {{--@include('partials.statistics')--}}
 
             <div class="run-list">
-            @include('partials.runlists')
+                @include('partials.runlists')
             </div>
-        </div>
+        {{--</div>--}}
     </div>
 @endsection

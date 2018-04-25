@@ -1,5 +1,6 @@
-{{-- IN DEVELOPMENT --}}
+{{-- INCOMPLETE: NO STATISTICS FUNCTIONALITY --}}
 {{-- This page is supposed to present statics regarding each of the runlists --}}
+{{-- by combining the statistics of the programs run within it --}}
 
 <div class="statistics">
     <div class="placeholder-stats">Total Stats</div>

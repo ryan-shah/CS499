@@ -22,7 +22,8 @@
 
 .statistics, .run-list{
     background-color: #4e555b;
-    height: 40vh;
+    /*height: 40vh;*/ /* To replace 85vh when statistics are implemented */
+    height: 85vh;
     margin: 2.5vh;
     overflow-y: scroll;
 }
