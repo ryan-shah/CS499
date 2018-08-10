@@ -1,7 +1,10 @@
 # CS499
 CS 499 Project
 
-Installation Guide
+## Documentation
+[View the Google Doc!](https://docs.google.com/document/d/1URUWIwv0EmwpLc2b5keVPKerlt98B2brmIPhbGCu7v4/edit?usp=sharing)
+
+## Installation Guide
 
 Assuming you have composer already installed, there are a few things you'll have to do to be able to run the website with php artisan.
 
